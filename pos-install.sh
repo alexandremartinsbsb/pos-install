@@ -20,6 +20,9 @@ echo "deb http://http.debian.net/debian/ buster-backports main contrib non-free"
 sudo apt update
 sudo apt upgrade -y
 
+## Driver
+sudo apt install nvidia-legacy-390xx-driver -y
+
 # ----------------------------- REQUISITOS ----------------------------- #
 ## Removendo travas eventuais do apt ##
 sudo rm /var/lib/dpkg/lock-frontend
