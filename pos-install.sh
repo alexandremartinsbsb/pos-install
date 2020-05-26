@@ -9,6 +9,17 @@ DIRETORIO_DOWNLOADS="/home/$USER/Downloads/programas"
 
 # ---------------------------------------------------------------------- #
 
+sudo sh -c 'echo "deb http://ftp.br.debian.org/debian buster main contrib non-free" > /etc/apt/sources.list'
+echo "deb-src http://ftp.br.debian.org/debian buster main contrib non-free" | sudo tee -a /etc/apt/sources.list
+echo "deb http://security.debian.org/ buster/updates main contrib non-free" | sudo tee -a /etc/apt/sources.list
+echo "deb-src http://security.debian.org/ buster/updates main contrib non-free" | sudo tee -a /etc/apt/sources.list
+echo "deb http://ftp.br.debian.org/debian/ buster-updates main contrib non-free" | sudo tee -a /etc/apt/sources.list
+echo "deb-src http://ftp.br.debian.org/debian/ buster-updates main contrib non-free" | sudo tee -a /etc/apt/sources.list
+echo "deb http://http.debian.net/debian/ buster-backports main contrib non-free" | sudo tee -a /etc/apt/sources.list
+
+sudo apt update
+sudo apt upgrade -y
+
 # ----------------------------- REQUISITOS ----------------------------- #
 ## Removendo travas eventuais do apt ##
 sudo rm /var/lib/dpkg/lock-frontend
