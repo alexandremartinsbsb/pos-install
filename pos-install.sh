@@ -4,6 +4,7 @@ echo "Iniciando script"
 
 URL_GOOGLE_CHROME="https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb"
 URL_GITHUB_DESKTOP="https://github.com/shiftkey/desktop/releases/download/release-2.5.0-linux2/GitHubDesktop-linux-2.5.0-linux2.deb"
+URL_TEAMVIEW="https://download.teamviewer.com/download/linux/teamviewer_amd64.deb"
 
 DIRETORIO_DOWNLOADS="/home/$USER/Downloads/programas"
 
@@ -19,6 +20,9 @@ echo "deb http://http.debian.net/debian/ buster-backports main contrib non-free"
 
 sudo apt update
 sudo apt upgrade -y
+
+## Dependencias
+sudo apt-get install sudo apt-get install '^libxcb.*-dev' libx11-xcb-dev libglu1-mesa-dev libxrender-dev libxi-dev libxkbcommon-dev libxkbcommon-x11-dev -y
 
 ## Driver
 sudo apt install nvidia-legacy-390xx-driver -y
@@ -47,6 +51,9 @@ sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub
 ## Instalar o Git
 sudo apt install git -y
 
+## Instala o Java
+sudo apt install default-jdk -y
+
 ## Microsoft Teams
 
 curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
@@ -64,9 +71,10 @@ sudo apt update -y
 mkdir "$DIRETORIO_DOWNLOADS"
 wget -c "$URL_GOOGLE_CHROME"   -P "$DIRETORIO_DOWNLOADS"
 wget -c "$URL_GITHUB_DESKTOP"  -P "$DIRETORIO_DOWNLOADS"
+wget -c "$URL_TEAMVIEW"        -P "$DIRETORIO_DOWNLOADS"
 
 ## Instalando pacotes .deb baixados na sessão anterior ##
-sudo dpkg -i $DIRETORIO_DOWNLOADS/*.deb
+sudo dpkg --force-depends -i $DIRETORIO_DOWNLOADS/*.deb
 
 ## Instalando pacotes Flatpak ##
 flatpak install flathub com.obsproject.Studio -y
@@ -93,7 +101,8 @@ sudo snap install photogimp
 
 # ----------------------------- PÓS-INSTALAÇÃO ----------------------------- #
 ## Finalização, atualização e limpeza##
-sudo rm -rf "$DIRETORIO_DOWNLOADS"
+#sudo rm -rf "$DIRETORIO_DOWNLOADS"
+sudo apt-get -f install -y
 sudo apt update && sudo apt dist-upgrade -y
 flatpak update
 sudo apt autoclean
