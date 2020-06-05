@@ -26,9 +26,14 @@ sudo apt-get install sudo apt-get install '^libxcb.*-dev' libx11-xcb-dev libglu1
 sudo apt install g++ build-essential qt5-default qt5-qmake qttools5-dev-tools -y
 sudo apt install libqt5dbus5 libqt5network5 libqt5core5a libqt5widgets5 libqt5gui5 libqt5svg5-dev -y
 sudo apt install git openssl ca-certificates -y
+sudo apt install curl
 
 sudo apt update
 sudo apt upgrade -y
+
+##Node & Npn
+curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+sudo apt-get install -y nodejs
 
 ## Driver
 sudo apt install nvidia-legacy-390xx-driver -y
