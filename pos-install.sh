@@ -60,6 +60,10 @@ sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub
 ## Instalar o Git
 sudo apt install git -y
 
+## Instalar o SSH(Git)
+ssh-keygen -o
+cat ~/.ssh/id_rsa.pub
+
 ## Instala o Java
 sudo apt install default-jdk -y
 
