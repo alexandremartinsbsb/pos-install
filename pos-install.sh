@@ -119,7 +119,9 @@ sudo snap install photogimp
 
 # ----------------------------- PÓS-INSTALAÇÃO ----------------------------- #
 ## Finalização, atualização e limpeza##
-#sudo rm -rf "$DIRETORIO_DOWNLOADS"
+sudo rm -rf "$DIRETORIO_DOWNLOADS"
+sudo rm -rf /var/cache/snapd
+sudo rm -rf ~/snap
 sudo apt-get -f install -y
 sudo apt update && sudo apt dist-upgrade -y
 flatpak update
