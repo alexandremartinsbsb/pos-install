@@ -17,12 +17,14 @@ echo "deb-src http://security.debian.org/ buster/updates main contrib non-free" 
 echo "deb http://ftp.br.debian.org/debian/ buster-updates main contrib non-free" | sudo tee -a /etc/apt/sources.list
 echo "deb-src http://ftp.br.debian.org/debian/ buster-updates main contrib non-free" | sudo tee -a /etc/apt/sources.list
 echo "deb http://http.debian.net/debian/ buster-backports main contrib non-free" | sudo tee -a /etc/apt/sources.list
+echo "deb https://deb.etcher.io stable etcher" | sudo tee /etc/apt/sources.list.d/balena-etcher.list
 
 sudo apt update
 sudo apt list --upgradable -a
 sudo apt full-upgrade -y
 
 ## Dependencias
+sudo apt-key adv --keyserver hkps://keyserver.ubuntu.com:443 --recv-keys 379CE192D401AB61
 sudo apt-get install sudo apt-get install '^libxcb.*-dev' libx11-xcb-dev libglu1-mesa-dev libxrender-dev libxi-dev libxkbcommon-dev libxkbcommon-x11-dev -y
 sudo apt install g++ build-essential qt5-default qt5-qmake qttools5-dev-tools -y
 sudo apt install libqt5dbus5 libqt5network5 libqt5core5a libqt5widgets5 libqt5gui5 libqt5svg5-dev -y
@@ -52,6 +54,10 @@ sudo dpkg --add-architecture i386
 sudo apt update
 sudo apt list --upgradable -a
 sudo apt full-upgrade -y
+
+## Etcher
+sudo apt-get update
+sudo apt-get install balena-etcher-electron
 
 ## Flameshot
 sudo apt install flameshot -y
