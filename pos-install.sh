@@ -56,8 +56,10 @@ sudo apt list --upgradable -a
 sudo apt full-upgrade -y
 
 ## Etcher
-sudo apt-get update
 sudo apt-get install balena-etcher-electron
+
+## Gdebi
+sudo apt install gdebi
 
 ## Flameshot
 sudo apt install flameshot -y
