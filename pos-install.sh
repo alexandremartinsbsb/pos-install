@@ -19,9 +19,11 @@ echo "deb-src http://ftp.br.debian.org/debian/ buster-updates main contrib non-f
 echo "deb http://http.debian.net/debian/ buster-backports main contrib non-free" | sudo tee -a /etc/apt/sources.list
 echo "deb https://deb.etcher.io stable etcher" | sudo tee /etc/apt/sources.list.d/balena-etcher.list
 
+## Atualização
 sudo apt update
 sudo apt list --upgradable -a
 sudo apt full-upgrade -y
+sudo apt autoremove -y
 
 ## Dependencias
 sudo apt-key adv --keyserver hkps://keyserver.ubuntu.com:443 --recv-keys 379CE192D401AB61
@@ -31,9 +33,11 @@ sudo apt install libqt5dbus5 libqt5network5 libqt5core5a libqt5widgets5 libqt5gu
 sudo apt install git openssl ca-certificates -y
 sudo apt install curl
 
+## Atualização
 sudo apt update
 sudo apt list --upgradable -a
 sudo apt full-upgrade -y
+sudo apt autoremove -y
 
 ##Node & Npn
 curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
@@ -41,6 +45,12 @@ sudo apt-get install -y nodejs
 
 ## Driver
 sudo apt install nvidia-legacy-390xx-driver -y
+
+## Atualização
+sudo apt update
+sudo apt list --upgradable -a
+sudo apt full-upgrade -y
+sudo apt autoremove -y
 
 # ----------------------------- REQUISITOS ----------------------------- #
 ## Removendo travas eventuais do apt ##
@@ -50,10 +60,11 @@ sudo rm /var/cache/apt/archives/lock
 ## Adicionando/Confirmando arquitetura de 32 bits ##
 sudo dpkg --add-architecture i386
 
-## Atualizando o repositório ##
+## Atualização
 sudo apt update
 sudo apt list --upgradable -a
 sudo apt full-upgrade -y
+sudo apt autoremove -y
 
 ## Etcher
 sudo apt-get install balena-etcher-electron -y
@@ -74,10 +85,11 @@ sudo apt install flatpak -y
 sudo apt install gnome-software-plugin-flatpak -y
 sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
-## Atualizando o repositório ##
+## Atualização
 sudo apt update
 sudo apt list --upgradable -a
 sudo apt full-upgrade -y
+sudo apt autoremove -y
 
 ## Instalar o Git
 sudo apt install git -y
@@ -99,10 +111,11 @@ sudo apt update -y
 sudo apt install teams -y
 
 # ----------------------------- EXECUÇÃO ----------------------------- #
-## Atualizando o repositório depois da adição de novos repositórios ##
+## Atualização
 sudo apt update
 sudo apt list --upgradable -a
 sudo apt full-upgrade -y
+sudo apt autoremove -y
 
 ## Download e instalaçao de programas externos ##
 mkdir "$DIRETORIO_DOWNLOADS"
@@ -135,8 +148,6 @@ flatpak install flathub com.spotify.Client
 sudo snap install robo3t-snap
 sudo snap install photogimp
 
-# ---------------------------------------------------------------------- #
-
 # ----------------------------- PÓS-INSTALAÇÃO ----------------------------- #
 ## Finalização, atualização e limpeza##
 sudo rm -rf "$DIRETORIO_DOWNLOADS"
@@ -144,10 +155,12 @@ sudo rm -rf /var/cache/snapd
 sudo rm -rf ~/snap
 sudo apt-get -f install -y
 sudo apt update
+flatpak update
+
+## Atualização
+sudo apt update
 sudo apt list --upgradable -a
 sudo apt full-upgrade -y
-flatpak update
-sudo apt autoclean
 sudo apt autoremove -y
 # ---------------------------------------------------------------------- #
 echo "Script Finalizado"
