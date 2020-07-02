@@ -132,17 +132,20 @@ flatpak install flathub io.dbeaver.DBeaverCommunity -y
 flatpak install flathub com.github.muriloventuroso.easyssh -y
 flatpak install flathub org.gnome.meld -y
 flatpak install flathub com.syntevo.SmartGit -y
+flatpak install flathub com.syntevo.SmartSynchronize -y
 flatpak install flathub org.videolan.VLC -y
-flatpak install flathub org.gabmus.hydrapaper
-flatpak install flathub org.telegram.desktop
-flatpak install flathub com.gigitux.gtkwhats
-flatpak install flathub com.skype.Client
-flatpak install flathub com.slack.Slack
-flatpak install flathub com.visualstudio.code
-flatpak install flathub com.jetbrains.IntelliJ-IDEA-Community
-flatpak install flathub com.sublimetext.three
-flatpak install flathub com.getpostman.Postman
-flatpak install flathub com.spotify.Client
+flatpak install flathub org.gabmus.hydrapaper -y
+flatpak install flathub org.telegram.desktop -y
+flatpak install flathub com.gigitux.gtkwhats -y
+flatpak install flathub com.skype.Client -y
+flatpak install flathub com.slack.Slack -y
+flatpak install flathub com.visualstudio.code -y
+flatpak install flathub com.jetbrains.IntelliJ-IDEA-Community -y
+flatpak install flathub com.sublimetext.three -y
+flatpak install flathub com.getpostman.Postman -y
+flatpak install flathub com.spotify.Client -y
+flatpak install flathub org.eclipse.Java -y
+flatpak install flathub com.axosoft.GitKraken -y
 
 ## Instalando pacotes Snap ##
 sudo snap install robo3t-snap
