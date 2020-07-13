@@ -101,15 +101,6 @@ cat ~/.ssh/id_rsa.pub
 ## Instala o Java
 sudo apt install default-jdk -y
 
-## Microsoft Teams
-
-curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
- 
-sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/ms-teams stable main" > /etc/apt/sources.list.d/teams.list'
- 
-sudo apt update -y
-sudo apt install teams -y
-
 # ----------------------------- EXECUÇÃO ----------------------------- #
 ## Atualização
 sudo apt update
@@ -146,6 +137,7 @@ flatpak install flathub com.getpostman.Postman -y
 flatpak install flathub com.spotify.Client -y
 flatpak install flathub org.eclipse.Java -y
 flatpak install flathub com.axosoft.GitKraken -y
+flatpak install flathub com.microsoft.Teams -y
 
 ## Instalando pacotes Snap ##
 sudo snap install robo3t-snap
