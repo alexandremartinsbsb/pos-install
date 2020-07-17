@@ -3,7 +3,7 @@ echo "Iniciando script"
 # ----------------------------- VARIÁVEIS ----------------------------- #
 
 URL_GOOGLE_CHROME="https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb"
-URL_GITHUB_DESKTOP="https://github.com/shiftkey/desktop/releases/download/release-2.5.0-linux2/GitHubDesktop-linux-2.5.0-linux2.deb"
+URL_GITHUB_DESKTOP="https://github.com/shiftkey/desktop/releases/download/release-2.5.3-linux1/GitHubDesktop-linux-2.5.3-linux1.deb"
 URL_TEAMVIEW="https://download.teamviewer.com/download/linux/teamviewer_amd64.deb"
 
 DIRETORIO_DOWNLOADS="/home/$USER/Downloads/programas"
