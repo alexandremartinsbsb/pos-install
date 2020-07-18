@@ -37,8 +37,9 @@ sudo apt-key adv --keyserver hkps://keyserver.ubuntu.com:443 --recv-keys 379CE19
 sudo apt-get install sudo apt-get install '^libxcb.*-dev' libx11-xcb-dev libglu1-mesa-dev libxrender-dev libxi-dev libxkbcommon-dev libxkbcommon-x11-dev -y
 sudo apt install g++ build-essential qt5-default qt5-qmake qttools5-dev-tools -y
 sudo apt install libqt5dbus5 libqt5network5 libqt5core5a libqt5widgets5 libqt5gui5 libqt5svg5-dev -y
+sudo apt install gnome-themes-standard gtk2-engines-murrine libglib2.0-dev libxml2-utils -y
 sudo apt install git openssl ca-certificates -y
-sudo apt install curl
+sudo apt install curl -y
 
 ## Atualização
 sudo apt update
@@ -134,6 +135,7 @@ flatpak install flathub org.eclipse.Java -y
 flatpak install flathub com.axosoft.GitKraken -y
 flatpak install flathub com.microsoft.Teams -y
 flatpak install flathub com.google.AndroidStudio -y
+flatpak install flathub org.gtk.Gtk3theme.Materia{,-dark,-light}{,-compact} -y
 
 ## Instalando pacotes Snap ##
 sudo snap install robo3t-snap
