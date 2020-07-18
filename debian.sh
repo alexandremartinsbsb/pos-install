@@ -53,12 +53,6 @@ sudo apt-get install -y nodejs
 ## Driver
 sudo apt install nvidia-legacy-390xx-driver -y
 
-## Atualização
-sudo apt update
-sudo apt list --upgradable -a
-sudo apt full-upgrade -y
-sudo apt autoremove -y
-
 # ----------------------------- REQUISITOS ----------------------------- #
 
 ## Atualização
