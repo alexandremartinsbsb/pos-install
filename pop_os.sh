@@ -42,13 +42,7 @@ curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
 sudo apt-get install -y nodejs
 
 ## Driver
-##sudo apt install nvidia-legacy-390xx-driver -y
-
-## Atualização
-sudo apt update
-sudo apt list --upgradable -a
-sudo apt full-upgrade -y
-sudo apt autoremove -y
+sudo apt install nvidia-legacy-390xx-driver -y
 
 # ----------------------------- REQUISITOS ----------------------------- #
 
@@ -73,9 +67,9 @@ snap install hello-world
 hello-world
 
 ## Flatpak
-sudo apt install flatpak -y
-sudo apt install gnome-software-plugin-flatpak -y
-sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+#sudo apt install flatpak -y
+#sudo apt install gnome-software-plugin-flatpak -y
+#sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
 ## Atualização
 sudo apt update
