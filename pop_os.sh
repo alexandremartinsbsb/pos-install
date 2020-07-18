@@ -17,15 +17,6 @@ sudo rm /var/cache/apt/archives/lock
 ## Adicionando/Confirmando arquitetura de 32 bits ##
 sudo dpkg --add-architecture i386
 
-sudo sh -c 'echo "deb http://ftp.br.debian.org/debian buster main contrib non-free" > /etc/apt/sources.list'
-echo "deb-src http://ftp.br.debian.org/debian buster main contrib non-free" | sudo tee -a /etc/apt/sources.list
-echo "deb http://security.debian.org/ buster/updates main contrib non-free" | sudo tee -a /etc/apt/sources.list
-echo "deb-src http://security.debian.org/ buster/updates main contrib non-free" | sudo tee -a /etc/apt/sources.list
-echo "deb http://ftp.br.debian.org/debian/ buster-updates main contrib non-free" | sudo tee -a /etc/apt/sources.list
-echo "deb-src http://ftp.br.debian.org/debian/ buster-updates main contrib non-free" | sudo tee -a /etc/apt/sources.list
-echo "deb http://http.debian.net/debian/ buster-backports main contrib non-free" | sudo tee -a /etc/apt/sources.list
-echo "deb https://deb.etcher.io stable etcher" | sudo tee /etc/apt/sources.list.d/balena-etcher.list
-
 ## Atualização
 sudo apt update
 sudo apt list --upgradable -a
@@ -51,7 +42,7 @@ curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
 sudo apt-get install -y nodejs
 
 ## Driver
-sudo apt install nvidia-legacy-390xx-driver -y
+##sudo apt install nvidia-legacy-390xx-driver -y
 
 ## Atualização
 sudo apt update
