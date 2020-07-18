@@ -5,6 +5,8 @@ echo "Iniciando script"
 URL_GOOGLE_CHROME="https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb"
 URL_GITHUB_DESKTOP="https://github.com/shiftkey/desktop/releases/download/release-2.5.3-linux1/GitHubDesktop-linux-2.5.3-linux1.deb"
 URL_TEAMVIEW="https://download.teamviewer.com/download/linux/teamviewer_amd64.deb"
+URL_ETCHER="https://github.com/balena-io/etcher/releases/download/v1.5.101/balena-etcher-electron_1.5.101_amd64.deb"
+URL_GTK2="http://ftp.br.debian.org/debian/pool/main/g/gtk2-engines-murrine/gtk2-engines-murrine_0.98.2-2+deb10u1_amd64.deb"
 
 DIRETORIO_DOWNLOADS="/home/$USER/Downloads/programas"
 
@@ -18,13 +20,13 @@ sudo rm /var/cache/apt/archives/lock
 sudo dpkg --add-architecture i386
 
 sudo sh -c 'echo "deb http://ftp.br.debian.org/debian buster main contrib non-free" > /etc/apt/sources.list'
-echo "deb-src http://ftp.br.debian.org/debian buster main contrib non-free" | sudo tee -a /etc/apt/sources.list
-echo "deb http://security.debian.org/ buster/updates main contrib non-free" | sudo tee -a /etc/apt/sources.list
-echo "deb-src http://security.debian.org/ buster/updates main contrib non-free" | sudo tee -a /etc/apt/sources.list
-echo "deb http://ftp.br.debian.org/debian/ buster-updates main contrib non-free" | sudo tee -a /etc/apt/sources.list
-echo "deb-src http://ftp.br.debian.org/debian/ buster-updates main contrib non-free" | sudo tee -a /etc/apt/sources.list
-echo "deb http://http.debian.net/debian/ buster-backports main contrib non-free" | sudo tee -a /etc/apt/sources.list
-echo "deb https://deb.etcher.io stable etcher" | sudo tee /etc/apt/sources.list.d/balena-etcher.list
+echo "deb-src http://deb.debian.org/debian/ buster main non-free contrib" | sudo tee -a /etc/apt/sources.list
+echo "deb http://security.debian.org/debian-security buster/updates main contrib non-free" | sudo tee -a /etc/apt/sources.list
+echo "deb-src http://security.debian.org/debian-security buster/updates main contrib non-free" | sudo tee -a /etc/apt/sources.list
+echo "deb http://deb.debian.org/debian/ buster-updates main contrib non-free" | sudo tee -a /etc/apt/sources.list
+echo "deb-src http://deb.debian.org/debian/ buster-updates main contrib non-free" | sudo tee -a /etc/apt/sources.list
+echo "deb http://deb.debian.org/debian/ buster-backports main contrib non-free" | sudo tee -a /etc/apt/sources.list
+echo "deb-src http://deb.debian.org/debian/ buster-backports main contrib non-free" | sudo tee -a /etc/apt/sources.list
 
 ## Atualização
 sudo apt update
@@ -34,12 +36,13 @@ sudo apt autoremove -y
 
 ## Dependencias
 sudo apt-key adv --keyserver hkps://keyserver.ubuntu.com:443 --recv-keys 379CE192D401AB61
-sudo apt-get install sudo apt-get install '^libxcb.*-dev' libx11-xcb-dev libglu1-mesa-dev libxrender-dev libxi-dev libxkbcommon-dev libxkbcommon-x11-dev -y
+sudo apt-get install '^libxcb.*-dev' libx11-xcb-dev libglu1-mesa-dev libxrender-dev libxi-dev libxkbcommon-dev libxkbcommon-x11-dev -y
 sudo apt install g++ build-essential qt5-default qt5-qmake qttools5-dev-tools -y
 sudo apt install libqt5dbus5 libqt5network5 libqt5core5a libqt5widgets5 libqt5gui5 libqt5svg5-dev -y
 sudo apt install gnome-themes-standard gtk2-engines-murrine libglib2.0-dev libxml2-utils -y
 sudo apt install git openssl ca-certificates -y
 sudo apt install curl -y
+sudo apt install -y sassc
 
 ## Atualização
 sudo apt update
@@ -62,9 +65,6 @@ sudo apt list --upgradable -a
 sudo apt full-upgrade -y
 sudo apt autoremove -y
 
-## Etcher
-sudo apt-get install balena-etcher-electron -y
-
 ## Gdebi
 sudo apt install gdebi -y
 
@@ -73,13 +73,14 @@ sudo apt install flameshot -y
 
 ## Snap
 sudo apt install snapd -y
-snap install hello-world
-hello-world
+sudo snap install hello-world
 
 ## Flatpak
 sudo apt install flatpak -y
 sudo apt install gnome-software-plugin-flatpak -y
 sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+sudo flatpak remote-add --if-not-exists kdeapps --from https://distribute.kde.org/kdeapps.flatpakrepo
+sudo flatpak update -y
 
 ## Atualização
 sudo apt update
@@ -95,7 +96,9 @@ ssh-keygen -o
 cat ~/.ssh/id_rsa.pub
 
 ## Instala o Java
-sudo apt install default-jdk -y
+sudo apt-get install openjdk-11-jdk -y
+export JAVA_HOME=/usr/lib/jvm/openjdk-11-jdk
+export PATH=$PATH:$JAVA_HOME/bin
 
 # ----------------------------- EXECUÇÃO ----------------------------- #
 ## Atualização
@@ -114,33 +117,32 @@ wget -c "$URL_TEAMVIEW"        -P "$DIRETORIO_DOWNLOADS"
 sudo dpkg --force-depends -i $DIRETORIO_DOWNLOADS/*.deb
 
 ## Instalando pacotes Flatpak ##
-flatpak install flathub com.obsproject.Studio -y
-flatpak install flathub io.dbeaver.DBeaverCommunity -y
-flatpak install flathub com.github.muriloventuroso.easyssh -y
-flatpak install flathub org.gnome.meld -y
-flatpak install flathub com.syntevo.SmartGit -y
-flatpak install flathub com.syntevo.SmartSynchronize -y
-flatpak install flathub org.videolan.VLC -y
-flatpak install flathub org.gabmus.hydrapaper -y
-flatpak install flathub org.telegram.desktop -y
-flatpak install flathub com.gigitux.gtkwhats -y
-flatpak install flathub com.skype.Client -y
-flatpak install flathub com.slack.Slack -y
-flatpak install flathub com.visualstudio.code -y
-flatpak install flathub com.jetbrains.IntelliJ-IDEA-Community -y
-flatpak install flathub com.sublimetext.three -y
-flatpak install flathub com.getpostman.Postman -y
-flatpak install flathub com.spotify.Client -y
-flatpak install flathub org.eclipse.Java -y
-flatpak install flathub com.axosoft.GitKraken -y
-flatpak install flathub com.microsoft.Teams -y
-flatpak install flathub com.google.AndroidStudio -y
-flatpak install flathub org.gtk.Gtk3theme.Materia{,-dark,-light}{,-compact} -y
+sudo flatpak install flathub com.obsproject.Studio -y
+sudo flatpak install flathub io.dbeaver.DBeaverCommunity -y
+sudo flatpak install flathub com.github.muriloventuroso.easyssh -y
+sudo flatpak install flathub org.gnome.meld -y
+sudo flatpak install flathub com.syntevo.SmartGit -y
+sudo flatpak install flathub com.syntevo.SmartSynchronize -y
+sudo flatpak install flathub org.videolan.VLC -y
+sudo flatpak install flathub org.gabmus.hydrapaper -y
+sudo flatpak install flathub org.telegram.desktop -y
+sudo flatpak install flathub com.gigitux.gtkwhats -y
+sudo flatpak install flathub com.skype.Client -y
+sudo flatpak install flathub com.slack.Slack -y
+sudo flatpak install flathub com.visualstudio.code -y
+sudo flatpak install flathub com.jetbrains.IntelliJ-IDEA-Community -y
+sudo flatpak install flathub com.sublimetext.three -y
+sudo flatpak install flathub com.getpostman.Postman -y
+sudo flatpak install flathub com.spotify.Client -y
+sudo flatpak install flathub org.eclipse.Java -y
+sudo flatpak install flathub com.axosoft.GitKraken -y
+sudo flatpak install flathub com.microsoft.Teams -y
+sudo flatpak install flathub com.google.AndroidStudio -y
+sudo flatpak install flathub org.gtk.Gtk3theme.Materia{,-dark,-light}{,-compact} -y
 
 ## Instalando pacotes Snap ##
 sudo snap install robo3t-snap
 sudo snap install photogimp
-sudo snap install flutter --classic
 
 # ----------------------------- PÓS-INSTALAÇÃO ----------------------------- #
 ## Finalização, atualização e limpeza##
@@ -149,7 +151,7 @@ sudo rm -rf /var/cache/snapd
 sudo rm -rf ~/snap
 sudo apt-get -f install -y
 sudo apt update
-flatpak update
+sudo flatpak update -y
 
 ## Atualização
 sudo apt update
