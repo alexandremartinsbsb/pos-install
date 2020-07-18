@@ -138,10 +138,12 @@ flatpak install flathub com.spotify.Client -y
 flatpak install flathub org.eclipse.Java -y
 flatpak install flathub com.axosoft.GitKraken -y
 flatpak install flathub com.microsoft.Teams -y
+flatpak install flathub com.google.AndroidStudio -y
 
 ## Instalando pacotes Snap ##
 sudo snap install robo3t-snap
 sudo snap install photogimp
+sudo snap install flutter --classic
 
 # ----------------------------- PÓS-INSTALAÇÃO ----------------------------- #
 ## Finalização, atualização e limpeza##
