@@ -117,31 +117,31 @@ wget -c "$URL_TEAMVIEW"        -P "$DIRETORIO_DOWNLOADS"
 sudo dpkg --force-depends -i $DIRETORIO_DOWNLOADS/*.deb
 
 ## Instalando pacotes Flatpak ##
-sudo flatpak install flathub com.obsproject.Studio -y
 sudo flatpak install flathub io.dbeaver.DBeaverCommunity -y
 sudo flatpak install flathub com.github.muriloventuroso.easyssh -y
 sudo flatpak install flathub org.gnome.meld -y
 sudo flatpak install flathub com.syntevo.SmartGit -y
 sudo flatpak install flathub com.syntevo.SmartSynchronize -y
-sudo flatpak install flathub org.videolan.VLC -y
 sudo flatpak install flathub org.gabmus.hydrapaper -y
-sudo flatpak install flathub org.telegram.desktop -y
-sudo flatpak install flathub com.gigitux.gtkwhats -y
-sudo flatpak install flathub com.skype.Client -y
-sudo flatpak install flathub com.slack.Slack -y
-sudo flatpak install flathub com.jetbrains.IntelliJ-IDEA-Community -y
-sudo flatpak install flathub com.sublimetext.three -y
-sudo flatpak install flathub com.getpostman.Postman -y
-sudo flatpak install flathub com.spotify.Client -y
-sudo flatpak install flathub org.eclipse.Java -y
-sudo flatpak install flathub com.axosoft.GitKraken -y
 sudo flatpak install flathub com.microsoft.Teams -y
-sudo flatpak install flathub com.google.AndroidStudio -y
-sudo flatpak install flathub org.gtk.Gtk3theme.Materia{,-dark,-light}{,-compact} -y
 
 ## Instalando pacotes Snap ##
 sudo snap install robo3t-snap
 sudo snap install photogimp
+sudo snap install obs-studio
+sudo snap install vlc
+sudo snap install telegram-desktop
+sudo snap install whatsdesk
+sudo snap install skype --classic
+sudo snap install slack --classic
+sudo snap install code --classic
+sudo snap install intellij-idea-community --classic
+sudo snap install sublime-text --classic
+sudo snap install postman
+sudo snap install spotify
+sudo snap install eclipse --classic
+sudo snap install gitkraken --classic
+sudo snap install android-studio --classic
 
 # ----------------------------- PÓS-INSTALAÇÃO ----------------------------- #
 ## Finalização, atualização e limpeza##
