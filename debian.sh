@@ -6,7 +6,7 @@ URL_GOOGLE_CHROME="https://dl.google.com/linux/direct/google-chrome-stable_curre
 URL_GITHUB_DESKTOP="https://github.com/shiftkey/desktop/releases/download/release-2.5.3-linux1/GitHubDesktop-linux-2.5.3-linux1.deb"
 URL_TEAMVIEW="https://download.teamviewer.com/download/linux/teamviewer_amd64.deb"
 URL_ETCHER="https://github.com/balena-io/etcher/releases/download/v1.5.101/balena-etcher-electron_1.5.101_amd64.deb"
-URL_GTK2="http://ftp.br.debian.org/debian/pool/main/g/gtk2-engines-murrine/gtk2-engines-murrine_0.98.2-2+deb10u1_amd64.deb"
+URL_VSCODE="https://go.microsoft.com/fwlink/?LinkID=760868"
 
 DIRETORIO_DOWNLOADS="/home/$USER/Downloads/programas"
 
@@ -129,7 +129,6 @@ sudo flatpak install flathub org.telegram.desktop -y
 sudo flatpak install flathub com.gigitux.gtkwhats -y
 sudo flatpak install flathub com.skype.Client -y
 sudo flatpak install flathub com.slack.Slack -y
-sudo flatpak install flathub com.visualstudio.code -y
 sudo flatpak install flathub com.jetbrains.IntelliJ-IDEA-Community -y
 sudo flatpak install flathub com.sublimetext.three -y
 sudo flatpak install flathub com.getpostman.Postman -y
