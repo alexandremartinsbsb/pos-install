@@ -144,6 +144,7 @@ sudo snap install spotify
 sudo snap install eclipse --classic
 sudo snap install gitkraken --classic
 sudo snap install android-studio --classic
+sudo snap install todoist
 
 # ----------------------------- PÓS-INSTALAÇÃO ----------------------------- #
 ## Finalização, atualização e limpeza##
