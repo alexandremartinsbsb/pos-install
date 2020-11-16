@@ -17,7 +17,7 @@ sudo rm /var/lib/dpkg/lock-frontend
 sudo rm /var/cache/apt/archives/lock
 
 ## Adicionando/Confirmando arquitetura de 32 bits ##
-sudo dpkg --add-architecture i386
+## sudo dpkg --add-architecture i386
 
 sudo sh -c 'echo "deb http://ftp.br.debian.org/debian buster main contrib non-free" > /etc/apt/sources.list'
 echo "deb-src http://deb.debian.org/debian/ buster main non-free contrib" | sudo tee -a /etc/apt/sources.list
