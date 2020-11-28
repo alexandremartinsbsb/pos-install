@@ -91,6 +91,9 @@ sudo apt autoremove -y
 ## Instalar o Git
 sudo apt install git -y
 
+# Instala Git Flow
+sudo apt install git-flow
+
 ## Instalar o SSH(Git)
 ssh-keygen -o
 cat ~/.ssh/id_rsa.pub
