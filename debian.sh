@@ -140,9 +140,7 @@ sudo snap install photogimp
 sudo snap install vlc
 sudo snap install telegram-desktop
 sudo snap install whatsdesk
-sudo snap install skype --classic
 sudo snap install slack --classic
-sudo snap install code --classic
 sudo snap install intellij-idea-community --classic
 sudo snap install sublime-text --classic
 sudo snap install postman
