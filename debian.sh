@@ -2,11 +2,15 @@
 echo "Iniciando script"
 # ----------------------------- VARIÁVEIS ----------------------------- #
 
-URL_GOOGLE_CHROME="https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb"
-URL_GITHUB_DESKTOP="https://github.com/shiftkey/desktop/releases/download/release-2.5.4-linux1/GitHubDesktop-linux-2.5.4-linux1.deb"
+#URL_GOOGLE_CHROME="https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb"
+URL_GOOGLE_CHROME=""
+URL_GITHUB_DESKTOP="https://github.com/shiftkey/desktop/releases/download/release-2.6.1-linux2/GitHubDesktop-linux-2.6.1-linux2.deb"
 URL_TEAMVIEW="https://download.teamviewer.com/download/linux/teamviewer_amd64.deb"
-URL_ETCHER="https://github.com/balena-io/etcher/releases/download/v1.5.106/balena-etcher-electron_1.5.106_amd64.deb"
-URL_VSCODE="https://go.microsoft.com/fwlink/?LinkID=760868"
+URL_ETCHER="https://github.com/balena-io/etcher/releases/download/v1.5.113/balena-etcher-electron_1.5.113_amd64.deb"
+URL_VSCODE="https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64"
+URL_TEAMS="https://go.microsoft.com/fwlink/p/?LinkID=2112886&clcid=0x416&culture=pt-br&country=BR"
+URL_COMPASS="https://downloads.mongodb.com/compass/mongodb-compass_1.24.6_amd64.deb"
+URL_SKYPE="https://go.skype.com/skypeforlinux-64.deb"
 
 DIRETORIO_DOWNLOADS="/home/$USER/Downloads/programas"
 
@@ -36,7 +40,7 @@ sudo apt autoremove -y
 
 ## Dependencias
 sudo apt-key adv --keyserver hkps://keyserver.ubuntu.com:443 --recv-keys 379CE192D401AB61
-sudo apt-get install '^libxcb.*-dev' libx11-xcb-dev libglu1-mesa-dev libxrender-dev libxi-dev libxkbcommon-dev libxkbcommon-x11-dev -y
+sudo apt install '^libxcb.*-dev' libx11-xcb-dev libglu1-mesa-dev libxrender-dev libxi-dev libxkbcommon-dev libxkbcommon-x11-dev -y
 sudo apt install g++ build-essential qt5-default qt5-qmake qttools5-dev-tools -y
 sudo apt install libqt5dbus5 libqt5network5 libqt5core5a libqt5widgets5 libqt5gui5 libqt5svg5-dev -y
 sudo apt install gnome-themes-standard gtk2-engines-murrine libglib2.0-dev libxml2-utils -y
@@ -51,8 +55,8 @@ sudo apt full-upgrade -y
 sudo apt autoremove -y
 
 ##Node & Npn
-curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
-sudo apt-get install -y nodejs
+curl -sL https://deb.nodesource.com/setup_15.x | sudo -E bash -
+sudo apt install -y nodejs
 
 ## Driver
 sudo apt install nvidia-legacy-390xx-driver -y
@@ -99,7 +103,7 @@ ssh-keygen -o
 cat ~/.ssh/id_rsa.pub
 
 ## Instala o Java
-sudo apt-get install openjdk-11-jdk -y
+sudo apt install openjdk-11-jdk -y
 export JAVA_HOME=/usr/lib/jvm/openjdk-11-jdk
 export PATH=$PATH:$JAVA_HOME/bin
 
@@ -117,6 +121,9 @@ wget -c "$URL_GITHUB_DESKTOP"  -P "$DIRETORIO_DOWNLOADS"
 wget -c "$URL_TEAMVIEW"        -P "$DIRETORIO_DOWNLOADS"
 wget -c "$URL_ETCHER"          -P "$DIRETORIO_DOWNLOADS"
 wget -c "$URL_VSCODE"          -P "$DIRETORIO_DOWNLOADS"
+wget -c "$URL_TEAMS"           -P "$DIRETORIO_DOWNLOADS"
+wget -c "$URL_COMPASS"         -P "$DIRETORIO_DOWNLOADS"
+wget -c "$URL_SKYPE"           -P "$DIRETORIO_DOWNLOADS"
 
 ## Instalando pacotes .deb baixados na sessão anterior ##
 sudo dpkg --force-depends -i $DIRETORIO_DOWNLOADS/*.deb
@@ -126,14 +133,10 @@ sudo flatpak install flathub io.dbeaver.DBeaverCommunity -y
 sudo flatpak install flathub com.github.muriloventuroso.easyssh -y
 sudo flatpak install flathub org.gnome.meld -y
 sudo flatpak install flathub com.syntevo.SmartGit -y
-sudo flatpak install flathub com.syntevo.SmartSynchronize -y
 sudo flatpak install flathub org.gabmus.hydrapaper -y
-sudo flatpak install flathub com.microsoft.Teams -y
 
 ## Instalando pacotes Snap ##
-sudo snap install robo3t-snap
 sudo snap install photogimp
-sudo snap install obs-studio
 sudo snap install vlc
 sudo snap install telegram-desktop
 sudo snap install whatsdesk
@@ -145,16 +148,14 @@ sudo snap install sublime-text --classic
 sudo snap install postman
 sudo snap install spotify
 sudo snap install eclipse --classic
-sudo snap install gitkraken --classic
 sudo snap install android-studio --classic
-sudo snap install todoist
 
 # ----------------------------- PÓS-INSTALAÇÃO ----------------------------- #
 ## Finalização, atualização e limpeza##
 sudo rm -rf "$DIRETORIO_DOWNLOADS"
 sudo rm -rf /var/cache/snapd
 sudo rm -rf ~/snap
-sudo apt-get -f install -y
+sudo apt -f install -y
 sudo apt update
 sudo flatpak update -y
 
