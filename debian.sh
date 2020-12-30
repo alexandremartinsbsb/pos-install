@@ -2,8 +2,7 @@
 echo "Iniciando script"
 # ----------------------------- VARIÁVEIS ----------------------------- #
 
-#URL_GOOGLE_CHROME="https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb"
-URL_GOOGLE_CHROME=""
+URL_GOOGLE_CHROME="https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb"
 URL_GITHUB_DESKTOP="https://github.com/shiftkey/desktop/releases/download/release-2.6.1-linux2/GitHubDesktop-linux-2.6.1-linux2.deb"
 URL_TEAMVIEW="https://download.teamviewer.com/download/linux/teamviewer_amd64.deb"
 URL_ETCHER="https://github.com/balena-io/etcher/releases/download/v1.5.113/balena-etcher-electron_1.5.113_amd64.deb"
