@@ -46,6 +46,7 @@ sudo apt install gnome-themes-standard gtk2-engines-murrine libglib2.0-dev libxm
 sudo apt install git openssl ca-certificates -y
 sudo apt install curl -y
 sudo apt install -y sassc
+sudo apt install zip -y
 
 ## Atualização
 sudo apt update
