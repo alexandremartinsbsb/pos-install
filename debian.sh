@@ -136,7 +136,6 @@ sudo flatpak install flathub com.syntevo.SmartGit -y
 sudo flatpak install flathub org.gabmus.hydrapaper -y
 
 ## Instalando pacotes Snap ##
-sudo snap install photogimp
 sudo snap install vlc
 sudo snap install telegram-desktop
 sudo snap install whatsdesk
