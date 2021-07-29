@@ -3,12 +3,10 @@ echo "Iniciando script"
 # ----------------------------- VARIÁVEIS ----------------------------- #
 
 URL_GOOGLE_CHROME="https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb"
-URL_GITHUB_DESKTOP="https://github.com/shiftkey/desktop/releases/download/release-2.6.1-linux2/GitHubDesktop-linux-2.6.1-linux2.deb"
+URL_GITHUB_DESKTOP="https://github.com/shiftkey/desktop/releases/download/release-2.9.0-linux4/GitHubDesktop-linux-2.9.0-linux4.deb"
 URL_TEAMVIEW="https://download.teamviewer.com/download/linux/teamviewer_amd64.deb"
-URL_ETCHER="https://github.com/balena-io/etcher/releases/download/v1.5.113/balena-etcher-electron_1.5.113_amd64.deb"
-URL_VSCODE="https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64"
-URL_TEAMS="https://go.microsoft.com/fwlink/p/?LinkID=2112886&clcid=0x416&culture=pt-br&country=BR"
-URL_COMPASS="https://downloads.mongodb.com/compass/mongodb-compass_1.24.6_amd64.deb"
+URL_ETCHER="https://github.com/balena-io/etcher/releases/download/v1.5.121/balena-etcher-electron_1.5.121_amd64.deb"
+URL_COMPASS="https://downloads.mongodb.com/compass/mongodb-compass_1.28.1_amd64.deb"
 URL_SKYPE="https://go.skype.com/skypeforlinux-64.deb"
 
 DIRETORIO_DOWNLOADS="/home/$USER/Downloads/programas"
@@ -55,7 +53,7 @@ sudo apt full-upgrade -y
 sudo apt autoremove -y
 
 ##Node & Npn
-curl -sL https://deb.nodesource.com/setup_15.x | sudo -E bash -
+curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
 sudo apt install -y nodejs
 
 ## Driver
@@ -120,8 +118,6 @@ wget -c "$URL_GOOGLE_CHROME"   -P "$DIRETORIO_DOWNLOADS"
 wget -c "$URL_GITHUB_DESKTOP"  -P "$DIRETORIO_DOWNLOADS"
 wget -c "$URL_TEAMVIEW"        -P "$DIRETORIO_DOWNLOADS"
 wget -c "$URL_ETCHER"          -P "$DIRETORIO_DOWNLOADS"
-wget -c "$URL_VSCODE"          -P "$DIRETORIO_DOWNLOADS"
-wget -c "$URL_TEAMS"           -P "$DIRETORIO_DOWNLOADS"
 wget -c "$URL_COMPASS"         -P "$DIRETORIO_DOWNLOADS"
 wget -c "$URL_SKYPE"           -P "$DIRETORIO_DOWNLOADS"
 
@@ -140,7 +136,7 @@ sudo snap install vlc
 sudo snap install telegram-desktop
 sudo snap install whatsdesk
 sudo snap install slack --classic
-sudo snap install intellij-idea-community --classic
+sudo snap install intellij-idea-ultimate --classic
 sudo snap install sublime-text --classic
 sudo snap install postman
 sudo snap install spotify
