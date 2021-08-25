@@ -48,7 +48,7 @@ sudo apt install zip -y
 sudo apt install unrar -y
 
 ## Atualização
-sudo apt update && sudo apt upgrade && sudo apt dist-upgrade && sudo apt autoremove && sudo apt autoclean && sudo apt clean
+sudo apt update -y && sudo apt upgrade -y && sudo apt dist-upgrade -y && sudo apt autoremove -y && sudo apt autoclean -y && sudo apt clean -y
 
 ##Node & Npn
 curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
@@ -60,7 +60,7 @@ sudo apt install nvidia-legacy-390xx-driver -y
 # ----------------------------- REQUISITOS ----------------------------- #
 
 ## Atualização
-sudo apt update && sudo apt upgrade && sudo apt dist-upgrade && sudo apt autoremove && sudo apt autoclean && sudo apt clean
+sudo apt update -y && sudo apt upgrade -y && sudo apt dist-upgrade -y && sudo apt autoremove -y && sudo apt autoclean -y && sudo apt clean -y
 
 ## Gdebi
 sudo apt install gdebi -y
@@ -80,7 +80,7 @@ sudo flatpak remote-add --if-not-exists kdeapps --from https://distribute.kde.or
 sudo flatpak update -y
 
 ## Atualização
-sudo apt update && sudo apt upgrade && sudo apt dist-upgrade && sudo apt autoremove && sudo apt autoclean && sudo apt clean
+sudo apt update -y && sudo apt upgrade -y && sudo apt dist-upgrade -y && sudo apt autoremove -y && sudo apt autoclean -y && sudo apt clean -y
 
 ## Instalar o Git
 sudo apt install git -y
@@ -99,7 +99,7 @@ export PATH=$PATH:$JAVA_HOME/bin
 
 # ----------------------------- EXECUÇÃO ----------------------------- #
 ## Atualização
-sudo apt update && sudo apt upgrade && sudo apt dist-upgrade && sudo apt autoremove && sudo apt autoclean && sudo apt clean
+sudo apt update -y && sudo apt upgrade -y && sudo apt dist-upgrade -y && sudo apt autoremove -y && sudo apt autoclean -y && sudo apt clean -y
 
 ## Download e instalaçao de programas externos ##
 mkdir "$DIRETORIO_DOWNLOADS"
@@ -142,6 +142,6 @@ sudo apt update
 sudo flatpak update -y
 
 ## Atualização
-sudo apt update && sudo apt upgrade && sudo apt dist-upgrade && sudo apt autoremove && sudo apt autoclean && sudo apt clean
+sudo apt update -y && sudo apt upgrade -y && sudo apt dist-upgrade -y && sudo apt autoremove -y && sudo apt autoclean -y && sudo apt clean -y
 # ---------------------------------------------------------------------- #
 echo "Script Finalizado"
