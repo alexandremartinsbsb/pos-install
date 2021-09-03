@@ -20,6 +20,7 @@ sudo rm /var/cache/apt/archives/lock
 ## Adicionando/Confirmando arquitetura de 32 bits ##
 ## sudo dpkg --add-architecture i386
 
+## Atualizando os repositorios do sistema
 sudo sh -c 'echo "deb http://ftp.br.debian.org/debian buster main contrib non-free" > /etc/apt/sources.list'
 echo "deb-src http://deb.debian.org/debian/ buster main non-free contrib" | sudo tee -a /etc/apt/sources.list
 echo "deb http://security.debian.org/debian-security buster/updates main contrib non-free" | sudo tee -a /etc/apt/sources.list
@@ -30,10 +31,7 @@ echo "deb http://deb.debian.org/debian/ buster-backports main contrib non-free" 
 echo "deb-src http://deb.debian.org/debian/ buster-backports main contrib non-free" | sudo tee -a /etc/apt/sources.list
 
 ## Atualização
-sudo apt update
-sudo apt list --upgradable -a
-sudo apt full-upgrade -y
-sudo apt autoremove -y
+sudo apt update -y && sudo apt upgrade -y && sudo apt dist-upgrade -y && sudo apt autoremove -y && sudo apt autoclean -y && sudo apt clean -y
 
 ## Dependencias
 sudo apt-key adv --keyserver hkps://keyserver.ubuntu.com:443 --recv-keys 379CE192D401AB61
@@ -79,9 +77,6 @@ sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub
 sudo flatpak remote-add --if-not-exists kdeapps --from https://distribute.kde.org/kdeapps.flatpakrepo
 sudo flatpak update -y
 
-## Atualização
-sudo apt update -y && sudo apt upgrade -y && sudo apt dist-upgrade -y && sudo apt autoremove -y && sudo apt autoclean -y && sudo apt clean -y
-
 ## Instalar o Git
 sudo apt install git -y
 
@@ -96,6 +91,10 @@ cat ~/.ssh/id_rsa.pub
 sudo apt install openjdk-11-jdk -y
 export JAVA_HOME=/usr/lib/jvm/openjdk-11-jdk
 export PATH=$PATH:$JAVA_HOME/bin
+
+## Instalando neofetch
+sudo apt install neofetch -y
+neofetch
 
 # ----------------------------- EXECUÇÃO ----------------------------- #
 ## Atualização
