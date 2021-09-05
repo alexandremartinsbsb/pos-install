@@ -21,14 +21,12 @@ sudo rm /var/cache/apt/archives/lock
 ## sudo dpkg --add-architecture i386
 
 ## Atualizando os repositorios do sistema
-sudo sh -c 'echo "deb http://ftp.br.debian.org/debian buster main contrib non-free" > /etc/apt/sources.list'
-echo "deb-src http://deb.debian.org/debian/ buster main non-free contrib" | sudo tee -a /etc/apt/sources.list
-echo "deb http://security.debian.org/debian-security buster/updates main contrib non-free" | sudo tee -a /etc/apt/sources.list
-echo "deb-src http://security.debian.org/debian-security buster/updates main contrib non-free" | sudo tee -a /etc/apt/sources.list
-echo "deb http://deb.debian.org/debian/ buster-updates main contrib non-free" | sudo tee -a /etc/apt/sources.list
-echo "deb-src http://deb.debian.org/debian/ buster-updates main contrib non-free" | sudo tee -a /etc/apt/sources.list
-echo "deb http://deb.debian.org/debian/ buster-backports main contrib non-free" | sudo tee -a /etc/apt/sources.list
-echo "deb-src http://deb.debian.org/debian/ buster-backports main contrib non-free" | sudo tee -a /etc/apt/sources.list
+sudo sh -c 'echo "deb http://deb.debian.org/debian/ bullseye main non-free contrib" > /etc/apt/sources.list'
+echo "deb-src http://deb.debian.org/debian/ bullseye main non-free contrib" | sudo tee -a /etc/apt/sources.list
+echo "deb http://security.debian.org/debian-security bullseye-security main non-free contrib" | sudo tee -a /etc/apt/sources.list
+echo "deb-src http://security.debian.org/debian-security bullseye-security main non-free contrib" | sudo tee -a /etc/apt/sources.list
+echo "deb http://deb.debian.org/debian/ bullseye-updates main non-free contrib" | sudo tee -a /etc/apt/sources.list
+echo "deb-src http://deb.debian.org/debian/ bullseye-updates main non-free contrib" | sudo tee -a /etc/apt/sources.list
 
 ## Atualização
 sudo apt update -y && sudo apt upgrade -y && sudo apt dist-upgrade -y && sudo apt autoremove -y && sudo apt autoclean -y && sudo apt clean -y
