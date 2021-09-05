@@ -43,6 +43,8 @@ sudo apt install -y sassc
 sudo apt install zip -y
 sudo apt install unrar -y
 sudo apt install wget -y
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-down "['']"
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-up "['']"
 
 ## Atualização
 sudo apt update -y && sudo apt upgrade -y && sudo apt dist-upgrade -y && sudo apt autoremove -y && sudo apt autoclean -y && sudo apt clean -y
