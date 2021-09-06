@@ -29,7 +29,7 @@ echo "deb http://deb.debian.org/debian/ bullseye-updates main non-free contrib" 
 echo "deb-src http://deb.debian.org/debian/ bullseye-updates main non-free contrib" | sudo tee -a /etc/apt/sources.list
 
 ## Atualização
-sudo apt update -y && sudo apt upgrade -y && sudo apt dist-upgrade -y && sudo apt autoremove -y && sudo apt autoclean -y && sudo apt clean -y
+sudo apt update -y && sudo apt upgrade -y && sudo apt full-upgrade -y && sudo apt autoremove -y && sudo apt autoclean -y && sudo apt clean -y
 
 ## Dependencias
 sudo apt-key adv --keyserver hkps://keyserver.ubuntu.com:443 --recv-keys 379CE192D401AB61
@@ -47,7 +47,7 @@ gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-down "['']"
 gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-up "['']"
 
 ## Atualização
-sudo apt update -y && sudo apt upgrade -y && sudo apt dist-upgrade -y && sudo apt autoremove -y && sudo apt autoclean -y && sudo apt clean -y
+sudo apt update -y && sudo apt upgrade -y && sudo apt full-upgrade -y && sudo apt autoremove -y && sudo apt autoclean -y && sudo apt clean -y
 
 ##Node & Npn
 curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
@@ -59,7 +59,7 @@ sudo apt install nvidia-legacy-390xx-driver -y
 # ----------------------------- REQUISITOS ----------------------------- #
 
 ## Atualização
-sudo apt update -y && sudo apt upgrade -y && sudo apt dist-upgrade -y && sudo apt autoremove -y && sudo apt autoclean -y && sudo apt clean -y
+sudo apt update -y && sudo apt upgrade -y && sudo apt full-upgrade -y && sudo apt autoremove -y && sudo apt autoclean -y && sudo apt clean -y
 
 ## Gdebi
 sudo apt install gdebi -y
@@ -99,7 +99,7 @@ neofetch
 
 # ----------------------------- EXECUÇÃO ----------------------------- #
 ## Atualização
-sudo apt update -y && sudo apt upgrade -y && sudo apt dist-upgrade -y && sudo apt autoremove -y && sudo apt autoclean -y && sudo apt clean -y
+sudo apt update -y && sudo apt upgrade -y && sudo apt full-upgrade -y && sudo apt autoremove -y && sudo apt autoclean -y && sudo apt clean -y
 
 ## Download e instalaçao de programas externos ##
 mkdir "$DIRETORIO_DOWNLOADS"
@@ -142,6 +142,6 @@ sudo apt update
 sudo flatpak update -y
 
 ## Atualização
-sudo apt update -y && sudo apt upgrade -y && sudo apt dist-upgrade -y && sudo apt autoremove -y && sudo apt autoclean -y && sudo apt clean -y
+sudo apt update -y && sudo apt upgrade -y && sudo apt full-upgrade -y && sudo apt autoremove -y && sudo apt autoclean -y && sudo apt clean -y
 # ---------------------------------------------------------------------- #
 echo "Script Finalizado"
