@@ -89,8 +89,8 @@ ssh-keygen -o
 cat ~/.ssh/id_rsa.pub
 
 ## Instala o Java
-sudo apt install openjdk-11-jdk -y
-export JAVA_HOME=/usr/lib/jvm/openjdk-11-jdk
+sudo apt install openjdk-17-jdk -y
+export JAVA_HOME=/usr/lib/jvm/openjdk-17-jdk
 export PATH=$PATH:$JAVA_HOME/bin
 
 ## Instalando neofetch
