@@ -102,16 +102,16 @@ neofetch
 sudo apt update -y && sudo apt upgrade -y && sudo apt full-upgrade -y && sudo apt autoremove -y && sudo apt autoclean -y && sudo apt clean -y
 
 ## Download e instalaçao de programas externos ##
-mkdir "$DIRETORIO_DOWNLOADS"
-wget -c "$URL_GOOGLE_CHROME"   -P "$DIRETORIO_DOWNLOADS"
-wget -c "$URL_GITHUB_DESKTOP"  -P "$DIRETORIO_DOWNLOADS"
-wget -c "$URL_TEAMVIEW"        -P "$DIRETORIO_DOWNLOADS"
-wget -c "$URL_ETCHER"          -P "$DIRETORIO_DOWNLOADS"
-wget -c "$URL_COMPASS"         -P "$DIRETORIO_DOWNLOADS"
-wget -c "$URL_SKYPE"           -P "$DIRETORIO_DOWNLOADS"
+mkdir "${DIRETORIO_DOWNLOADS}"
+wget -c "${URL_GOOGLE_CHROME}"   -P "${DIRETORIO_DOWNLOADS}"
+wget -c "${URL_GITHUB_DESKTOP}"  -P "${DIRETORIO_DOWNLOADS}"
+wget -c "${URL_TEAMVIEW}"        -P "${DIRETORIO_DOWNLOADS}"
+wget -c "${URL_ETCHER}"          -P "${DIRETORIO_DOWNLOADS}"
+wget -c "${URL_COMPASS}"         -P "${DIRETORIO_DOWNLOADS}"
+wget -c "${URL_SKYPE}"           -P "${DIRETORIO_DOWNLOADS}"
 
 ## Instalando pacotes .deb baixados na sessão anterior ##
-sudo dpkg --force-depends -i $DIRETORIO_DOWNLOADS/*.deb
+sudo dpkg --force-depends -i ${DIRETORIO_DOWNLOADS}/*.deb
 
 ## Instalando pacotes Flatpak ##
 sudo flatpak install flathub io.dbeaver.DBeaverCommunity -y
