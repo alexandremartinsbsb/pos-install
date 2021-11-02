@@ -9,7 +9,7 @@ URL_ETCHER="https://github.com/balena-io/etcher/releases/download/v1.5.121/balen
 URL_COMPASS="https://downloads.mongodb.com/compass/mongodb-compass_1.28.1_amd64.deb"
 URL_SKYPE="https://go.skype.com/skypeforlinux-64.deb"
 
-DIRETORIO_DOWNLOADS="/home/$USER/Downloads/programas"
+DIRETORIO_DOWNLOADS="./programas"
 
 # ---------------------------------------------------------------------- #
 
