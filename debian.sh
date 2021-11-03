@@ -67,10 +67,6 @@ sudo apt install gdebi -y
 ## Flameshot
 sudo apt install flameshot -y
 
-## Snap
-sudo apt install snapd -y
-sudo snap install hello-world
-
 ## Flatpak
 sudo apt install flatpak -y
 sudo apt install gnome-software-plugin-flatpak -y
@@ -119,18 +115,16 @@ sudo flatpak install flathub com.github.muriloventuroso.easyssh -y
 sudo flatpak install flathub org.gnome.meld -y
 sudo flatpak install flathub com.syntevo.SmartGit -y
 sudo flatpak install flathub org.gabmus.hydrapaper -y
-
-## Instalando pacotes Snap ##
-sudo snap install vlc
-sudo snap install telegram-desktop
-sudo snap install whatsdesk
-sudo snap install slack --classic
-sudo snap install intellij-idea-ultimate --classic
-sudo snap install sublime-text --classic
-sudo snap install postman
-sudo snap install spotify
-sudo snap install eclipse --classic
-sudo snap install android-studio --classic
+sudo flatpak install flathub org.videolan.VLC -y
+sudo flatpak install flathub org.telegram.desktop -y
+sudo flatpak install flathub com.slack.Slack -y
+sudo flatpak install flathub com.jetbrains.IntelliJ-IDEA-Ultimate -y
+sudo flatpak install flathub com.sublimetext.three -y
+sudo flatpak install flathub com.getpostman.Postman -y
+sudo flatpak install flathub com.spotify.Client -y
+sudo flatpak install flathub org.eclipse.Java -y
+sudo flatpak install flathub com.google.AndroidStudio -y
+sudo flatpak install flathub io.bit3.WhatsAppQT -y
 
 # ----------------------------- PÓS-INSTALAÇÃO ----------------------------- #
 ## Finalização, atualização e limpeza##
