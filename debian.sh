@@ -3,11 +3,13 @@ echo "Iniciando script"
 # ----------------------------- VARIÁVEIS ----------------------------- #
 
 URL_GOOGLE_CHROME="https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb"
-URL_GITHUB_DESKTOP="https://github.com/shiftkey/desktop/releases/download/release-2.9.0-linux4/GitHubDesktop-linux-2.9.0-linux4.deb"
-URL_TEAMVIEW="https://download.teamviewer.com/download/linux/teamviewer_amd64.deb"
+#URL_GITHUB_DESKTOP="https://github.com/shiftkey/desktop/releases/download/release-2.9.0-linux4/GitHubDesktop-linux-2.9.0-linux4.deb"
+#URL_TEAMVIEW="https://download.teamviewer.com/download/linux/teamviewer_amd64.deb"
 URL_ETCHER="https://github.com/balena-io/etcher/releases/download/v1.5.121/balena-etcher-electron_1.5.121_amd64.deb"
 URL_COMPASS="https://downloads.mongodb.com/compass/mongodb-compass_1.28.1_amd64.deb"
 URL_SKYPE="https://go.skype.com/skypeforlinux-64.deb"
+URL_DBEAVER="https://dbeaver.io/files/dbeaver-ce_latest_amd64.deb"
+URL_SMARTGIT="https://www.syntevo.com/downloads/smartgit/smartgit-21_2_0.deb"
 
 DIRETORIO_DOWNLOADS="./programas"
 
@@ -74,6 +76,14 @@ sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub
 sudo flatpak remote-add --if-not-exists kdeapps --from https://distribute.kde.org/kdeapps.flatpakrepo
 sudo flatpak update -y
 
+## Instalar Spotify
+curl -sS https://download.spotify.com/debian/pubkey_0D811D58.gpg | sudo apt-key add -
+echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
+sudo apt update -y && sudo apt install spotify-client -y
+
+## Instalar VLC
+sudo apt install vlc -y
+
 ## Instalar o Git
 sudo apt install git -y
 
@@ -86,7 +96,7 @@ cat ~/.ssh/id_rsa.pub
 
 ## Instala o Java
 sudo apt install openjdk-17-jdk -y
-export JAVA_HOME=/usr/lib/jvm/java-1.17.0-openjdk-amd64
+export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
 export PATH=$PATH:$JAVA_HOME/bin
 
 ## Instalando neofetch
@@ -100,30 +110,31 @@ sudo apt update -y && sudo apt upgrade -y && sudo apt full-upgrade -y && sudo ap
 ## Download e instalaçao de programas externos ##
 mkdir "${DIRETORIO_DOWNLOADS}"
 wget -c "${URL_GOOGLE_CHROME}"   -P "${DIRETORIO_DOWNLOADS}"
-wget -c "${URL_GITHUB_DESKTOP}"  -P "${DIRETORIO_DOWNLOADS}"
-wget -c "${URL_TEAMVIEW}"        -P "${DIRETORIO_DOWNLOADS}"
+#wget -c "${URL_GITHUB_DESKTOP}"  -P "${DIRETORIO_DOWNLOADS}"
+#wget -c "${URL_TEAMVIEW}"        -P "${DIRETORIO_DOWNLOADS}"
 wget -c "${URL_ETCHER}"          -P "${DIRETORIO_DOWNLOADS}"
 wget -c "${URL_COMPASS}"         -P "${DIRETORIO_DOWNLOADS}"
 wget -c "${URL_SKYPE}"           -P "${DIRETORIO_DOWNLOADS}"
+wget -c "${URL_DBEAVER}"         -P "${DIRETORIO_DOWNLOADS}"
+wget -c "${URL_SMARTGIT}"        -P "${DIRETORIO_DOWNLOADS}"
 
 ## Instalando pacotes .deb baixados na sessão anterior ##
 sudo dpkg --force-depends -i ${DIRETORIO_DOWNLOADS}/*.deb
 
 ## Instalando pacotes Flatpak ##
-sudo flatpak install flathub io.dbeaver.DBeaverCommunity -y
-sudo flatpak install flathub com.github.muriloventuroso.easyssh -y
-sudo flatpak install flathub org.gnome.meld -y
-sudo flatpak install flathub com.syntevo.SmartGit -y
-sudo flatpak install flathub org.gabmus.hydrapaper -y
-sudo flatpak install flathub org.videolan.VLC -y
+#sudo flatpak install flathub io.dbeaver.DBeaverCommunity -y
+#sudo flatpak install flathub com.github.muriloventuroso.easyssh -y
+#sudo flatpak install flathub org.gnome.meld -y
+#sudo flatpak install flathub com.syntevo.SmartGit -y
+#sudo flatpak install flathub org.gabmus.hydrapaper -y
 sudo flatpak install flathub org.telegram.desktop -y
-sudo flatpak install flathub com.slack.Slack -y
-sudo flatpak install flathub com.jetbrains.IntelliJ-IDEA-Ultimate -y
-sudo flatpak install flathub com.sublimetext.three -y
+#sudo flatpak install flathub com.slack.Slack -y
+#sudo flatpak install flathub com.jetbrains.IntelliJ-IDEA-Ultimate -y
+#sudo flatpak install flathub com.sublimetext.three -y
 sudo flatpak install flathub com.getpostman.Postman -y
-sudo flatpak install flathub com.spotify.Client -y
-sudo flatpak install flathub org.eclipse.Java -y
-sudo flatpak install flathub com.google.AndroidStudio -y
+#sudo flatpak install flathub com.spotify.Client -y
+#sudo flatpak install flathub org.eclipse.Java -y
+#sudo flatpak install flathub com.google.AndroidStudio -y
 sudo flatpak install flathub io.bit3.WhatsAppQT -y
 
 # ----------------------------- PÓS-INSTALAÇÃO ----------------------------- #
@@ -137,5 +148,6 @@ sudo flatpak update -y
 
 ## Atualização
 sudo apt update -y && sudo apt upgrade -y && sudo apt full-upgrade -y && sudo apt autoremove -y && sudo apt autoclean -y && sudo apt clean -y
+sudo flatpak repair -y && sudo flatpak update && sudo flatpak uninstall --unused
 # ---------------------------------------------------------------------- #
 echo "Script Finalizado"
