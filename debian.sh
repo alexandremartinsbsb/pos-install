@@ -52,7 +52,7 @@ gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-up "['']"
 sudo apt update -y && sudo apt upgrade -y && sudo apt full-upgrade -y && sudo apt autoremove -y && sudo apt autoclean -y && sudo apt clean -y
 
 ##Node & Npn
-curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+curl -fsSL https://deb.nodesource.com/setup_17.x | sudo -E bash -
 sudo apt install -y nodejs
 
 ## Driver
@@ -88,7 +88,7 @@ sudo apt install vlc -y
 sudo apt install git -y
 
 # Instala Git Flow
-sudo apt install git-flow
+sudo apt install git-flow -y
 
 ## Instalar o SSH(Git)
 ssh-keygen -o
