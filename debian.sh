@@ -148,6 +148,6 @@ sudo flatpak update -y
 
 ## Atualização
 sudo apt update -y && sudo apt upgrade -y && sudo apt full-upgrade -y && sudo apt autoremove -y && sudo apt autoclean -y && sudo apt clean -y
-sudo flatpak repair -y && sudo flatpak update && sudo flatpak uninstall --unused
+sudo flatpak repair && sudo flatpak update -y && sudo flatpak uninstall --unused -y
 # ---------------------------------------------------------------------- #
 echo "Script Finalizado"
