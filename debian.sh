@@ -31,6 +31,7 @@ echo "deb http://deb.debian.org/debian/ bullseye-updates main non-free contrib" 
 echo "deb-src http://deb.debian.org/debian/ bullseye-updates main non-free contrib" | sudo tee -a /etc/apt/sources.list
 
 ## Atualização
+sudo rm /var/lib/apt/lists/* ; sudo rm /var/lib/apt/lists/partial/*
 sudo apt update -y && sudo apt upgrade -y && sudo apt full-upgrade -y && sudo apt autoremove -y && sudo apt autoclean -y && sudo apt clean -y
 
 ## Dependencias
@@ -49,6 +50,7 @@ gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-down "['']"
 gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-up "['']"
 
 ## Atualização
+sudo rm /var/lib/apt/lists/* ; sudo rm /var/lib/apt/lists/partial/*
 sudo apt update -y && sudo apt upgrade -y && sudo apt full-upgrade -y && sudo apt autoremove -y && sudo apt autoclean -y && sudo apt clean -y
 
 ##Node & Npn
@@ -61,6 +63,7 @@ sudo apt install nvidia-legacy-390xx-driver -y
 # ----------------------------- REQUISITOS ----------------------------- #
 
 ## Atualização
+sudo rm /var/lib/apt/lists/* ; sudo rm /var/lib/apt/lists/partial/*
 sudo apt update -y && sudo apt upgrade -y && sudo apt full-upgrade -y && sudo apt autoremove -y && sudo apt autoclean -y && sudo apt clean -y
 
 ## Gdebi
@@ -105,6 +108,7 @@ neofetch
 
 # ----------------------------- EXECUÇÃO ----------------------------- #
 ## Atualização
+sudo rm /var/lib/apt/lists/* ; sudo rm /var/lib/apt/lists/partial/*
 sudo apt update -y && sudo apt upgrade -y && sudo apt full-upgrade -y && sudo apt autoremove -y && sudo apt autoclean -y && sudo apt clean -y
 
 ## Download e instalaçao de programas externos ##
@@ -140,13 +144,12 @@ sudo flatpak install flathub io.bit3.WhatsAppQT -y
 # ----------------------------- PÓS-INSTALAÇÃO ----------------------------- #
 ## Finalização, atualização e limpeza##
 sudo rm -rf "$DIRETORIO_DOWNLOADS"
-sudo rm -rf /var/cache/snapd
-sudo rm -rf ~/snap
 sudo apt -f install -y
 sudo apt update
 sudo flatpak update -y
 
 ## Atualização
+sudo rm /var/lib/apt/lists/* ; sudo rm /var/lib/apt/lists/partial/*
 sudo apt update -y && sudo apt upgrade -y && sudo apt full-upgrade -y && sudo apt autoremove -y && sudo apt autoclean -y && sudo apt clean -y sudo flatpak repair && sudo flatpak update -y && sudo flatpak uninstall --unused -y
 # ---------------------------------------------------------------------- #
 echo "Script Finalizado"
