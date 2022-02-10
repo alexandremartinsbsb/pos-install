@@ -3,13 +3,13 @@ echo "Iniciando script"
 # ----------------------------- VARIÁVEIS ----------------------------- #
 
 URL_GOOGLE_CHROME="https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb"
-#URL_GITHUB_DESKTOP="https://github.com/shiftkey/desktop/releases/download/release-2.9.0-linux4/GitHubDesktop-linux-2.9.0-linux4.deb"
-#URL_TEAMVIEW="https://download.teamviewer.com/download/linux/teamviewer_amd64.deb"
+URL_GITHUB_DESKTOP="https://github.com/shiftkey/desktop/releases/download/release-2.9.6-linux1/GitHubDesktop-linux-2.9.6-linux1.deb"
+URL_TEAMVIEW="https://download.teamviewer.com/download/linux/teamviewer_amd64.deb"
 URL_ETCHER="https://github.com/balena-io/etcher/releases/download/v1.7.0/balena-etcher-electron_1.7.0_amd64.deb"
-#URL_COMPASS="https://downloads.mongodb.com/compass/mongodb-compass_1.28.1_amd64.deb"
+URL_COMPASS="https://downloads.mongodb.com/compass/mongodb-compass_1.30.1_amd64.deb"
 URL_SKYPE="https://go.skype.com/skypeforlinux-64.deb"
 URL_DBEAVER="https://dbeaver.io/files/dbeaver-ce_latest_amd64.deb"
-URL_SMARTGIT="https://www.syntevo.com/downloads/smartgit/smartgit-21_2_0.deb"
+URL_SMARTGIT="https://www.syntevo.com/downloads/smartgit/smartgit-21_2_2.deb"
 
 DIRETORIO_DOWNLOADS="./programas"
 
@@ -31,8 +31,7 @@ echo "deb http://deb.debian.org/debian/ bullseye-updates main non-free contrib" 
 echo "deb-src http://deb.debian.org/debian/ bullseye-updates main non-free contrib" | sudo tee -a /etc/apt/sources.list
 
 ## Atualização
-sudo rm -rf /var/lib/apt/lists/* && sudo rm -rf /var/lib/apt/lists/partial/*
-sudo apt update -y && sudo apt upgrade -y && sudo apt full-upgrade -y && sudo apt autoremove -y && sudo apt autoclean -y && sudo apt clean -y
+sudo rm -rf /var/lib/apt/lists/* && sudo rm -rf /var/lib/apt/lists/partial/* && sudo apt update -y && sudo apt upgrade -y && sudo apt full-upgrade -y && sudo apt autoremove -y && sudo apt autoclean -y && sudo apt clean -y
 
 ## Dependencias
 sudo apt-key adv --keyserver hkps://keyserver.ubuntu.com:443 --recv-keys 379CE192D401AB61
@@ -50,8 +49,7 @@ gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-down "['']"
 gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-up "['']"
 
 ## Atualização
-sudo rm -rf /var/lib/apt/lists/* && sudo rm -rf /var/lib/apt/lists/partial/*
-sudo apt update -y && sudo apt upgrade -y && sudo apt full-upgrade -y && sudo apt autoremove -y && sudo apt autoclean -y && sudo apt clean -y
+sudo rm -rf /var/lib/apt/lists/* && sudo rm -rf /var/lib/apt/lists/partial/* && sudo apt update -y && sudo apt upgrade -y && sudo apt full-upgrade -y && sudo apt autoremove -y && sudo apt autoclean -y && sudo apt clean -y
 
 ##Node & Npn
 curl -fsSL https://deb.nodesource.com/setup_17.x | sudo -E bash -
@@ -63,8 +61,7 @@ sudo apt install nvidia-legacy-390xx-driver -y
 # ----------------------------- REQUISITOS ----------------------------- #
 
 ## Atualização
-sudo rm -rf /var/lib/apt/lists/* && sudo rm -rf /var/lib/apt/lists/partial/*
-sudo apt update -y && sudo apt upgrade -y && sudo apt full-upgrade -y && sudo apt autoremove -y && sudo apt autoclean -y && sudo apt clean -y
+sudo rm -rf /var/lib/apt/lists/* && sudo rm -rf /var/lib/apt/lists/partial/* && sudo apt update -y && sudo apt upgrade -y && sudo apt full-upgrade -y && sudo apt autoremove -y && sudo apt autoclean -y && sudo apt clean -y
 
 ## Gdebi
 sudo apt install gdebi -y
@@ -108,16 +105,15 @@ neofetch
 
 # ----------------------------- EXECUÇÃO ----------------------------- #
 ## Atualização
-sudo rm -rf /var/lib/apt/lists/* && sudo rm -rf /var/lib/apt/lists/partial/*
-sudo apt update -y && sudo apt upgrade -y && sudo apt full-upgrade -y && sudo apt autoremove -y && sudo apt autoclean -y && sudo apt clean -y
+sudo rm -rf /var/lib/apt/lists/* && sudo rm -rf /var/lib/apt/lists/partial/* && sudo apt update -y && sudo apt upgrade -y && sudo apt full-upgrade -y && sudo apt autoremove -y && sudo apt autoclean -y && sudo apt clean -y
 
 ## Download e instalaçao de programas externos ##
 mkdir "${DIRETORIO_DOWNLOADS}"
 wget -c "${URL_GOOGLE_CHROME}"   -P "${DIRETORIO_DOWNLOADS}"
-#wget -c "${URL_GITHUB_DESKTOP}"  -P "${DIRETORIO_DOWNLOADS}"
-#wget -c "${URL_TEAMVIEW}"        -P "${DIRETORIO_DOWNLOADS}"
+wget -c "${URL_GITHUB_DESKTOP}"  -P "${DIRETORIO_DOWNLOADS}"
+wget -c "${URL_TEAMVIEW}"        -P "${DIRETORIO_DOWNLOADS}"
 wget -c "${URL_ETCHER}"          -P "${DIRETORIO_DOWNLOADS}"
-#wget -c "${URL_COMPASS}"         -P "${DIRETORIO_DOWNLOADS}"
+wget -c "${URL_COMPASS}"         -P "${DIRETORIO_DOWNLOADS}"
 wget -c "${URL_SKYPE}"           -P "${DIRETORIO_DOWNLOADS}"
 wget -c "${URL_DBEAVER}"         -P "${DIRETORIO_DOWNLOADS}"
 wget -c "${URL_SMARTGIT}"        -P "${DIRETORIO_DOWNLOADS}"
@@ -128,13 +124,13 @@ sudo dpkg --force-depends -i ${DIRETORIO_DOWNLOADS}/*.deb
 ## Instalando pacotes Flatpak ##
 #sudo flatpak install flathub io.dbeaver.DBeaverCommunity -y
 #sudo flatpak install flathub com.github.muriloventuroso.easyssh -y
-#sudo flatpak install flathub org.gnome.meld -y
+sudo flatpak install flathub org.gnome.meld -y
 #sudo flatpak install flathub com.syntevo.SmartGit -y
 #sudo flatpak install flathub org.gabmus.hydrapaper -y
 sudo flatpak install flathub org.telegram.desktop -y
-#sudo flatpak install flathub com.slack.Slack -y
+sudo flatpak install flathub com.slack.Slack -y
 #sudo flatpak install flathub com.jetbrains.IntelliJ-IDEA-Ultimate -y
-#sudo flatpak install flathub com.sublimetext.three -y
+sudo flatpak install flathub com.sublimetext.three -y
 sudo flatpak install flathub com.getpostman.Postman -y
 #sudo flatpak install flathub com.spotify.Client -y
 #sudo flatpak install flathub org.eclipse.Java -y
@@ -149,7 +145,6 @@ sudo apt update
 sudo flatpak update -y
 
 ## Atualização
-sudo rm -rf /var/lib/apt/lists/* && sudo rm -rf /var/lib/apt/lists/partial/*
-sudo apt update -y && sudo apt upgrade -y && sudo apt full-upgrade -y && sudo apt autoremove -y && sudo apt autoclean -y && sudo apt clean -y sudo flatpak repair && sudo flatpak update -y && sudo flatpak uninstall --unused -y
+sudo rm -rf /var/lib/apt/lists/* && sudo rm -rf /var/lib/apt/lists/partial/* && sudo apt update -y && sudo apt upgrade -y && sudo apt full-upgrade -y && sudo apt autoremove -y && sudo apt autoclean -y && sudo apt clean -y sudo flatpak repair && sudo flatpak update -y && sudo flatpak uninstall --unused -y
 # ---------------------------------------------------------------------- #
 echo "Script Finalizado"
