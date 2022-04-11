@@ -88,6 +88,9 @@ sudo apt install openjdk-17-jdk-headless -y
 sudo apt install neofetch -y
 neofetch
 
+## driver video
+sudo ubuntu-drivers autoinstall
+
 # ----------------------------- EXECUÇÃO ----------------------------- #
 ## Atualização
 sudo rm -rf /var/lib/apt/lists/* && sudo rm -rf /var/lib/apt/lists/partial/* && sudo apt update -y && sudo apt list --upgradable && sudo apt upgrade -y && sudo apt full-upgrade -y && sudo apt autoremove -y && sudo apt autoclean -y && sudo apt clean -y
