@@ -82,7 +82,7 @@ ssh-keygen -o
 cat ~/.ssh/id_rsa.pub
 
 ## Instala o Java
-sudo apt install openjdk-17-jdk-headless
+sudo apt install openjdk-17-jdk-headless -y
 
 ## Instalando neofetch
 sudo apt install neofetch -y
