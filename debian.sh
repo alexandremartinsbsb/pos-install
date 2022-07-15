@@ -104,6 +104,7 @@ adiciona_suporte_arquitetura_32bits(){
     sudo dpkg --add-architecture i386
 }
 
+## Instala NodeJs, NPM e AngularCli
 instala_node_npm_e_angularcli(){
     echo -e "${VERDE}[INFO] - Instalando NodeJs, Npm e AngulaCli${SEM_COR}"
 
@@ -156,6 +157,7 @@ baixa_intellij(){
     wget -c https://www.jetbrains.com/pt-br/idea/download/download-thanks.html?platform=linux -P "/home/$USER/Documentos"
 }
 
+## Instala VScode
 instala_vscode(){
     echo -e "${VERDE}[INFO] - Instalando VScode${SEM_COR}"
 
@@ -237,7 +239,18 @@ limpa_sistema(){
 remove_travas_apt
 testa_internet
 atualiza
-baixa_instala_debs
+atualiza_repositorios_sistema
+atualiza
+adiciona_dependencias_e_extras
+#adiciona_suporte_arquitetura_32bits
+instala_node_npm_e_angularcli
+instala_flatpa
+#instala_spotify
+instala_ssh_git
+instala_java17
+baixa_intellij
+instala_vscode
+baixa_instala_programas_debs
 instala_flatpaks
 instala_snaps
 limpa_sistema
