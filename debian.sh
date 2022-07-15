@@ -1,23 +1,28 @@
 #!/usr/bin/env bash
-echo "Iniciando script"
+
+echo -e "Iniciando script"
+
 # ----------------------------- VARIÁVEIS ----------------------------- #
 
+## URLs
 URL_GOOGLE_CHROME="https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb"
-URL_GITHUB_DESKTOP="https://github.com/shiftkey/desktop/releases/download/release-3.0.1-linux1/GitHubDesktop-linux-3.0.1-linux1.deb"
+URL_GITHUB_DESKTOP="https://github.com/shiftkey/desktop/releases/download/release-3.0.3-linux1/GitHubDesktop-linux-3.0.3-linux1.deb"
 URL_TEAMVIEW="https://download.teamviewer.com/download/linux/teamviewer_amd64.deb"
 URL_ETCHER="https://github.com/balena-io/etcher/releases/download/v1.7.9/balena-etcher-electron_1.7.9_amd64.deb"
-URL_COMPASS="https://downloads.mongodb.com/compass/mongodb-compass_1.32.2_amd64.deb"
+URL_COMPASS="https://downloads.mongodb.com/compass/mongodb-compass_1.32.3_amd64.deb"
 URL_SKYPE="https://go.skype.com/skypeforlinux-64.deb"
 URL_DBEAVER="https://dbeaver.io/files/dbeaver-ce_latest_amd64.deb"
 URL_SMARTGIT="https://www.syntevo.com/downloads/smartgit/smartgit-21_2_3.deb"
-URL_WHATSAPP="https://github.com/meetfranz/franz/releases/download/v5.9.2/franz_5.9.2_amd64.deb"
 
+## DIRETORIO E ARQUIVOS
 DIRETORIO_DOWNLOADS="$HOME/Downloads/programas"
 
+## CORES
 VERMELHO='\e[1;91m'
 VERDE='\e[1;92m'
 SEM_COR='\e[0m'
 
+## NOMES DE PROGRAMAS PARA INSTALAR
 PROGRAMAS_PARA_INSTALAR=(
     nvidia-legacy-390xx-driver
     gdebi
@@ -26,17 +31,56 @@ PROGRAMAS_PARA_INSTALAR=(
     git
     git-flow
     neofetch
+    snapd
 )
 
 # ----------------------------- FUNCOES -------------------------------- #
 
-atualiza(){
-    sudo rm -rf /var/lib/apt/lists/* && sudo rm -rf /var/lib/apt/lists/partial/* && sudo apt update -y && sudo apt list --upgradable && sudo apt upgrade -y && sudo apt full-upgrade -y && sudo apt autoremove -y && sudo apt autoclean -y && sudo apt clean -y sudo flatpak repair && sudo flatpak update -y && sudo flatpak uninstall --unused -y
+## Atualizando os repositorios do sistema
+atualiza_repositorios_sistema(){
+    echo -e "${VERDE}[INFO] - Atualizando repositorio do sistema${SEM_COR}"
+
+    sudo sh -c 'echo "deb http://deb.debian.org/debian/ bullseye main non-free contrib" > /etc/apt/sources.list'
+    echo "deb-src http://deb.debian.org/debian/ bullseye main non-free contrib" | sudo tee -a /etc/apt/sources.list
+    echo "deb http://security.debian.org/debian-security bullseye-security main non-free contrib" | sudo tee -a /etc/apt/sources.list
+    echo "deb-src http://security.debian.org/debian-security bullseye-security main non-free contrib" | sudo tee -a /etc/apt/sources.list
+    echo "deb http://deb.debian.org/debian/ bullseye-updates main non-free contrib" | sudo tee -a /etc/apt/sources.list
+    echo "deb-src http://deb.debian.org/debian/ bullseye-updates main non-free contrib" | sudo tee -a /etc/apt/sources.list
 }
 
-# ----------------------------- FUNCOES -------------------------------- #
+## ATUALIZA O REPOSITORIO E SISTEMA
+atualiza(){
+    echo -e "${VERDE}[INFO] - Atualizando o sistema${SEM_COR}"
 
+    sudo rm -rf /var/lib/apt/lists/* && sudo rm -rf /var/lib/apt/lists/partial/* && sudo apt update -y && sudo apt list --upgradable && sudo apt upgrade -y && sudo apt full-upgrade -y && sudo apt dist-upgrade -y && sudo apt autoremove -y && sudo apt autoclean -y && sudo apt clean -y sudo flatpak repair && sudo flatpak update -y && sudo flatpak uninstall --unused -y
+}
+
+## Dependencias
+adiciona_dependencias_e_extras(){    
+    echo -e "${VERDE}[INFO] - Instalando dependencias${SEM_COR}"
+
+    sudo apt-key adv --keyserver hkps://keyserver.ubuntu.com:443 --recv-keys 379CE192D401AB61
+    sudo apt-key adv --keyserver hkps://keyserver.ubuntu.com:443 --recv-keys 5E3C45D7B312C643
+    sudo apt install '^libxcb.*-dev' libx11-xcb-dev libglu1-mesa-dev libxrender-dev libxi-dev libxkbcommon-dev libxkbcommon-x11-dev -y
+    sudo apt install g++ build-essential qt5-qmake qttools5-dev-tools -y
+    sudo apt install libqt5dbus5 libqt5network5 libqt5core5a libqt5widgets5 libqt5gui5 libqt5svg5-dev -y
+    sudo apt install gnome-themes-standard gtk2-engines-murrine libglib2.0-dev libxml2-utils -y
+    sudo apt install git openssl ca-certificates -y
+    sudo apt install apt-transport-https -y
+    sudo apt install wget gpg -y
+    sudo apt install curl -y
+    sudo apt install -y sassc
+    sudo apt install zip -y
+    sudo apt install unrar -y
+    sudo apt install wget -y
+    gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-down "['']"
+    gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-up "['']"
+}
+
+## INTERNET CONECTADO?
 testa_internet(){
+    echo -e "${VERDE}[INFO] - Testando se esta OK a internet${SEM_COR}"
+
     if ! ping -c 1 8.8.8.8 -q &> /dev/null; then
         echo -e "${VERMELHO}[ERROR] - O computador nao tem conexao com a internet. Verificar a situacao da rede.${SEM_COR}"
         exit 1
@@ -45,104 +89,88 @@ testa_internet(){
     fi
 }
 
-## Removendo travas eventuais do apt ##
+## Removendo travas eventuais do apt(UBUNTU) ##
 remove_travas_apt(){
+    echo -e "${VERDE}[INFO] - Removendo travas do apt(ubuntu)${SEM_COR}"
+
     sudo rm /var/lib/dpkg/lock-frontend
     sudo rm /var/cache/apt/archives/lock
 }
 
 ## Adicionando/Confirmando arquitetura de 32 bits ##
-## sudo dpkg --add-architecture i386
+adiciona_suporte_arquitetura_32bits(){
+    echo -e "${VERDE}[INFO] - Instalando suporte a arquitetura de 32bits${SEM_COR}"
 
-## Atualizando os repositorios do sistema
-sudo sh -c 'echo "deb http://deb.debian.org/debian/ bullseye main non-free contrib" > /etc/apt/sources.list'
-echo "deb-src http://deb.debian.org/debian/ bullseye main non-free contrib" | sudo tee -a /etc/apt/sources.list
-echo "deb http://security.debian.org/debian-security bullseye-security main non-free contrib" | sudo tee -a /etc/apt/sources.list
-echo "deb-src http://security.debian.org/debian-security bullseye-security main non-free contrib" | sudo tee -a /etc/apt/sources.list
-echo "deb http://deb.debian.org/debian/ bullseye-updates main non-free contrib" | sudo tee -a /etc/apt/sources.list
-echo "deb-src http://deb.debian.org/debian/ bullseye-updates main non-free contrib" | sudo tee -a /etc/apt/sources.list
+    sudo dpkg --add-architecture i386
+}
 
-## Atualização
-sudo rm -rf /var/lib/apt/lists/* && sudo rm -rf /var/lib/apt/lists/partial/* && sudo apt update -y && sudo apt upgrade -y && sudo apt full-upgrade -y && sudo apt autoremove -y && sudo apt autoclean -y && sudo apt clean -y
+instala_node_npm_e_angularcli(){
+    echo -e "${VERDE}[INFO] - Instalando NodeJs, Npm e AngulaCli${SEM_COR}"
 
-## Dependencias
-sudo apt-key adv --keyserver hkps://keyserver.ubuntu.com:443 --recv-keys 379CE192D401AB61
-sudo apt-key adv --keyserver hkps://keyserver.ubuntu.com:443 --recv-keys 5E3C45D7B312C643
-sudo apt install '^libxcb.*-dev' libx11-xcb-dev libglu1-mesa-dev libxrender-dev libxi-dev libxkbcommon-dev libxkbcommon-x11-dev -y
-sudo apt install g++ build-essential qt5-qmake qttools5-dev-tools -y
-sudo apt install libqt5dbus5 libqt5network5 libqt5core5a libqt5widgets5 libqt5gui5 libqt5svg5-dev -y
-sudo apt install gnome-themes-standard gtk2-engines-murrine libglib2.0-dev libxml2-utils -y
-sudo apt install git openssl ca-certificates -y
-sudo apt install curl -y
-sudo apt install -y sassc
-sudo apt install zip -y
-sudo apt install unrar -y
-sudo apt install wget -y
-gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-down "['']"
-gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-up "['']"
-
-## Atualização
-sudo rm -rf /var/lib/apt/lists/* && sudo rm -rf /var/lib/apt/lists/partial/* && sudo apt update -y && sudo apt upgrade -y && sudo apt full-upgrade -y && sudo apt autoremove -y && sudo apt autoclean -y && sudo apt clean -y
-
-##Node & Npn
-curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
-sudo apt install -y nodejs
-
-## Driver
-##sudo apt install nvidia-legacy-390xx-driver -y
-
-# ----------------------------- REQUISITOS ----------------------------- #
-
-## Atualização
-sudo rm -rf /var/lib/apt/lists/* && sudo rm -rf /var/lib/apt/lists/partial/* && sudo apt update -y && sudo apt upgrade -y && sudo apt full-upgrade -y && sudo apt autoremove -y && sudo apt autoclean -y && sudo apt clean -y
-
-## Gdebi
-##sudo apt install gdebi -y
-
-## Flameshot
-#sudo apt install flameshot -y
+    curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+    sudo apt install -y nodejs
+    sudo npm install -g @angular/cli -y
+}
 
 ## Flatpak
-sudo apt install flatpak -y
-sudo apt install gnome-software-plugin-flatpak -y
-sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-sudo flatpak remote-add --if-not-exists kdeapps --from https://distribute.kde.org/kdeapps.flatpakrepo
-sudo flatpak update -y
+instala_flatpa(){
+    echo -e "${VERDE}[INFO] - Instalando Flatpak${SEM_COR}"
+
+    sudo apt install flatpak -y
+    sudo apt install gnome-software-plugin-flatpak -y
+    sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+    sudo flatpak remote-add --if-not-exists kdeapps --from https://distribute.kde.org/kdeapps.flatpakrepo
+    sudo flatpak update -y
+}
 
 ## Instalar Spotify
-##curl -sS https://download.spotify.com/debian/pubkey_5E3C45D7B312C643.gpg | sudo apt-key add -
-##echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
-##sudo apt update -y && sudo apt install spotify-client -y
+instala_spotify(){
+    echo -e "${VERDE}[INFO] - Instalando Spotify${SEM_COR}"
 
-## Instalar VLC
-##sudo apt install vlc -y
-
-## Instalar o Git
-#sudo apt install git -y
-
-# Instala Git Flow
-##sudo apt install git-flow -y
+    curl -sS https://download.spotify.com/debian/pubkey_5E3C45D7B312C643.gpg | sudo apt-key add -
+    echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
+    sudo apt-get update -y && sudo apt-get install spotify-client -y
+}
 
 ## Instalar o SSH(Git)
-ssh-keygen -o
-cat ~/.ssh/id_rsa.pub
+instala_ssh_git(){
+    echo -e "${VERDE}[INFO] - Instalando SSH(Git)${SEM_COR}"
+
+    ssh-keygen -o
+    cat ~/.ssh/id_rsa.pub
+}
 
 ## Instala o Java
-sudo apt install openjdk-17-jdk -y
-export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
-export PATH=$PATH:$JAVA_HOME/bin
+instala_java17(){
+    echo -e "${VERDE}[INFO] - Instalando JDK17${SEM_COR}"
 
-## Instalando neofetch
-##sudo apt install neofetch -y
-##neofetch
+    sudo apt install openjdk-17-jdk -y
+    export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
+    export PATH=$PATH:$JAVA_HOME/bin
+}
 
-# ----------------------------- EXECUÇÃO ----------------------------- #
-## Atualização
-sudo rm -rf /var/lib/apt/lists/* && sudo rm -rf /var/lib/apt/lists/partial/* && sudo apt update -y && sudo apt upgrade -y && sudo apt full-upgrade -y && sudo apt autoremove -y && sudo apt autoclean -y && sudo apt clean -y
+## Baixar Intellij IDEA
+baixa_intellij(){
+    echo -e "${VERDE}[INFO] - Baixando Intellij IDEA${SEM_COR}"
+
+    wget -c https://www.jetbrains.com/pt-br/idea/download/download-thanks.html?platform=linux -P "/home/$USER/Documentos"
+}
+
+instala_vscode(){
+    echo -e "${VERDE}[INFO] - Instalando VScode${SEM_COR}"
+
+    wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
+    sudo install -D -o root -g root -m 644 packages.microsoft.gpg /etc/apt/keyrings
+    sudo sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
+    sudo rm -rf packages.microsoft.gpg
+    sudo apt update -y
+    sudo apt install code -y
+}
 
 ## Download e instalaçao de programas externos ##
-baixa_instala_debs(){
+baixa_instala_programas_debs(){
     echo -e "${VERDE}[INFO] - Baixando instalando pacotes .deb${SEM_COR}"
+
     mkdir "$DIRETORIO_DOWNLOADS"
     wget -c "$URL_GOOGLE_CHROME"   -P "$DIRETORIO_DOWNLOADS"
     wget -c "$URL_GITHUB_DESKTOP"  -P "$DIRETORIO_DOWNLOADS"
@@ -152,7 +180,6 @@ baixa_instala_debs(){
     wget -c "$URL_SKYPE"           -P "$DIRETORIO_DOWNLOADS"
     wget -c "$URL_DBEAVER"         -P "$DIRETORIO_DOWNLOADS"
     wget -c "$URL_SMARTGIT"        -P "$DIRETORIO_DOWNLOADS"
-    wget -c "$URL_WHATSAPP"        -P "$DIRETORIO_DOWNLOADS"
 
     echo -e "${VERDE}[INFO] - Instalando pacotes .deb baixados${SEM_COR}"
 
@@ -166,7 +193,7 @@ baixa_instala_debs(){
         if ! dpkg -l | grep -q $nome_do_programa; then # verifica se ja esta instalado
             sudo apt install "$nome_do_programa" -y
         else
-            echo "[JA_ESTA_INSTALADO] - $nome_do_programa"
+            echo "[INSTALADO] - $nome_do_programa"
         fi
     done
 }
@@ -195,7 +222,7 @@ instala_flatpaks(){
 instala_snaps(){
     echo -e "${VERDE}[INFO] - Instalando pacotes via Snap${SEM_COR}"
 
-    #sudo snap install NOME
+    sudo snap install whatsdesk
 }
 
 # ----------------------------- POS-INSTALACAO ----------------------------- #
