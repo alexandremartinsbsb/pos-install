@@ -32,6 +32,7 @@ PROGRAMAS_PARA_INSTALAR=(
     git-flow
     neofetch
     snapd
+    core
 )
 
 # ----------------------------- FUNCOES -------------------------------- #
@@ -61,6 +62,7 @@ adiciona_dependencias_e_extras(){
 
     sudo apt-key adv --keyserver hkps://keyserver.ubuntu.com:443 --recv-keys 379CE192D401AB61
     sudo apt-key adv --keyserver hkps://keyserver.ubuntu.com:443 --recv-keys 5E3C45D7B312C643
+    sudo apt-key adv --keyserver hkps://keyserver.ubuntu.com:443 --recv-keys EB3E94ADBE1229CF
     sudo apt install '^libxcb.*-dev' libx11-xcb-dev libglu1-mesa-dev libxrender-dev libxi-dev libxkbcommon-dev libxkbcommon-x11-dev -y
     sudo apt install g++ build-essential qt5-qmake qttools5-dev-tools -y
     sudo apt install libqt5dbus5 libqt5network5 libqt5core5a libqt5widgets5 libqt5gui5 libqt5svg5-dev -y
@@ -114,7 +116,7 @@ instala_node_npm_e_angularcli(){
 }
 
 ## Flatpak
-instala_flatpa(){
+instala_flatpak(){
     echo -e "${VERDE}[INFO] - Instalando Flatpak${SEM_COR}"
 
     sudo apt install flatpak -y
@@ -171,7 +173,7 @@ instala_vscode(){
 
 ## Download e instalaçao de programas externos ##
 baixa_instala_programas_debs(){
-    echo -e "${VERDE}[INFO] - Baixando instalando pacotes .deb${SEM_COR}"
+    echo -e "${VERDE}[INFO] - Baixando pacotes .deb${SEM_COR}"
 
     mkdir "$DIRETORIO_DOWNLOADS"
     wget -c "$URL_GOOGLE_CHROME"   -P "$DIRETORIO_DOWNLOADS"
@@ -224,7 +226,9 @@ instala_flatpaks(){
 instala_snaps(){
     echo -e "${VERDE}[INFO] - Instalando pacotes via Snap${SEM_COR}"
 
+    sudo snap install hello-world
     sudo snap install whatsdesk
+    hello-world
 }
 
 # ----------------------------- POS-INSTALACAO ----------------------------- #
@@ -238,13 +242,12 @@ limpa_sistema(){
 
 remove_travas_apt
 testa_internet
-atualiza
 atualiza_repositorios_sistema
-atualiza
 adiciona_dependencias_e_extras
+atualiza
 #adiciona_suporte_arquitetura_32bits
 instala_node_npm_e_angularcli
-instala_flatpa
+instala_flatpak
 #instala_spotify
 instala_ssh_git
 instala_java17
