@@ -200,20 +200,20 @@ baixa_instala_programas_debs(){
 instala_flatpaks(){
     echo -e "${VERDE}[INFO] - Instalando pacotes via Flatpak${SEM_COR}"
 
-    #flatpak install flathub io.dbeaver.DBeaverCommunity -y
-    flatpak install flathub com.github.muriloventuroso.easyssh -y
-    flatpak install flathub org.gnome.meld -y
-    #flatpak install flathub com.syntevo.SmartGit -y
-    #flatpak install flathub org.gabmus.hydrapaper -y
-    flatpak install flathub org.telegram.desktop -y
-    flatpak install flathub com.slack.Slack -y
-    #flatpak install flathub com.jetbrains.IntelliJ-IDEA-Ultimate -y
-    flatpak install flathub com.sublimetext.three -y
-    flatpak install flathub com.getpostman.Postman -y
-    flatpak install flathub com.spotify.Client -y
-    #flatpak install flathub org.eclipse.Java -y
-    #flatpak install flathub com.google.AndroidStudio -y
-    flatpak install flathub org.gimp.GIMP -y
+    #sudo flatpak install flathub io.dbeaver.DBeaverCommunity -y
+    sudo flatpak install flathub com.github.muriloventuroso.easyssh -y
+    sudo flatpak install flathub org.gnome.meld -y
+    #sudo flatpak install flathub com.syntevo.SmartGit -y
+    #sudo flatpak install flathub org.gabmus.hydrapaper -y
+    sudo flatpak install flathub org.telegram.desktop -y
+    sudo flatpak install flathub com.slack.Slack -y
+    #sudo flatpak install flathub com.jetbrains.IntelliJ-IDEA-Ultimate -y
+    sudo flatpak install flathub com.sublimetext.three -y
+    sudo flatpak install flathub com.getpostman.Postman -y
+    sudo flatpak install flathub com.spotify.Client -y
+    #sudo flatpak install flathub org.eclipse.Java -y
+    #sudo flatpak install flathub com.google.AndroidStudio -y
+    sudo flatpak install flathub org.gimp.GIMP -y
 }
 
 ## Instalando pacotes Snap ##
