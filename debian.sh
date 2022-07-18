@@ -156,19 +156,14 @@ instala_java17(){
 baixa_intellij(){
     echo -e "${VERDE}[INFO] - Baixando Intellij IDEA${SEM_COR}"
 
-    wget -c https://www.jetbrains.com/pt-br/idea/download/download-thanks.html?platform=linux -P "/home/$USER/Documentos"
+    wget -c https://download.jetbrains.com/idea/ideaIU-2022.1.3.tar.gz?_gl=1*5shxvo*_ga*OTY0MTQ1NzI2LjE2NTgxMDg1NTk.*_ga_9J976DJZ68*MTY1ODEwODU1OC4xLjAuMTY1ODEwODU1OS4w -P "/home/$USER/Documentos"
 }
 
 ## Instala VScode
 instala_vscode(){
     echo -e "${VERDE}[INFO] - Instalando VScode${SEM_COR}"
 
-    wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
-    sudo install -D -o root -g root -m 644 packages.microsoft.gpg /etc/apt/keyrings
-    sudo sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
-    sudo rm -rf packages.microsoft.gpg
-    sudo apt update -y
-    sudo apt install code -y
+
 }
 
 ## Download e instalaçao de programas externos ##
@@ -243,8 +238,8 @@ limpa_sistema(){
 remove_travas_apt
 testa_internet
 atualiza_repositorios_sistema
-adiciona_dependencias_e_extras
 atualiza
+adiciona_dependencias_e_extras
 #adiciona_suporte_arquitetura_32bits
 instala_node_npm_e_angularcli
 instala_flatpak
