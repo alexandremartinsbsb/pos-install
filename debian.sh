@@ -62,7 +62,6 @@ adiciona_dependencias_e_extras(){
 
     sudo apt-key adv --keyserver hkps://keyserver.ubuntu.com:443 --recv-keys 379CE192D401AB61
     sudo apt-key adv --keyserver hkps://keyserver.ubuntu.com:443 --recv-keys 5E3C45D7B312C643
-    sudo apt-key adv --keyserver hkps://keyserver.ubuntu.com:443 --recv-keys EB3E94ADBE1229CF
     sudo apt install '^libxcb.*-dev' libx11-xcb-dev libglu1-mesa-dev libxrender-dev libxi-dev libxkbcommon-dev libxkbcommon-x11-dev -y
     sudo apt install g++ build-essential qt5-qmake qttools5-dev-tools -y
     sudo apt install libqt5dbus5 libqt5network5 libqt5core5a libqt5widgets5 libqt5gui5 libqt5svg5-dev -y
