@@ -155,7 +155,7 @@ instala_java17(){
 baixa_intellij(){
     echo -e "${VERDE}[INFO] - Baixando Intellij IDEA${SEM_COR}"
 
-    wget -c https://download.jetbrains.com/idea/ideaIU-2022.1.3.tar.gz?_gl=1*5shxvo*_ga*OTY0MTQ1NzI2LjE2NTgxMDg1NTk.*_ga_9J976DJZ68*MTY1ODEwODU1OC4xLjAuMTY1ODEwODU1OS4w -P "/home/$USER/Documentos"
+    wget -c https://download.jetbrains.com/idea/ideaIU-2022.1.4.tar.gz?_ga=2.50087334.1486325822.1658323479-1411422535.1658117102&_gl=1*dz5zek*_ga*MTQxMTQyMjUzNS4xNjU4MTE3MTAy*_ga_9J976DJZ68*MTY1ODM2MjQyMC40LjEuMTY1ODM2MjQyNi41NA.. -P "/home/$USER/Documentos"
 }
 
 ## Instala VScode
@@ -240,6 +240,7 @@ atualiza_repositorios_sistema
 atualiza
 adiciona_dependencias_e_extras
 #adiciona_suporte_arquitetura_32bits
+atualiza
 instala_node_npm_e_angularcli
 instala_flatpak
 #instala_spotify
