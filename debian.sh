@@ -225,6 +225,14 @@ instala_snaps(){
     hello-world
 }
 
+## Instala ferramentas adicionais
+instala_ferramentas_extras(){
+    echo -e "${VERDE}[INFO] - Instalando ferramentas adicionais${SEM_COR}"
+
+    sudo add-apt-repository universe
+    sudo apt install $(apt search gnome-shell-extension | grep ^gnome | cut -d / -f1)
+}
+
 # ----------------------------- POS-INSTALACAO ----------------------------- #
 ## Finalização, atualização e limpeza##
 limpa_sistema(){
@@ -251,6 +259,7 @@ instala_vscode
 baixa_instala_programas_debs
 instala_flatpaks
 instala_snaps
+instala_ferramentas_extras
 limpa_sistema
 atualiza
 
