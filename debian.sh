@@ -231,6 +231,7 @@ instala_ferramentas_extras(){
 
     sudo add-apt-repository universe
     sudo apt install $(apt search gnome-shell-extension | grep ^gnome | cut -d / -f1)
+    sudo apt install alacarte -y
 }
 
 # ----------------------------- POS-INSTALACAO ----------------------------- #
