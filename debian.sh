@@ -220,9 +220,9 @@ instala_flatpaks(){
 instala_snaps(){
     echo -e "${VERDE}[INFO] - Instalando pacotes via Snap${SEM_COR}"
 
-    sudo snap install hello-world
-    sudo snap install whatsdesk
+    sudo snap install hello-world    
     hello-world
+    sudo snap install whatsie
 }
 
 ## Instala ferramentas adicionais
