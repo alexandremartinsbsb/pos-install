@@ -6,13 +6,13 @@ echo -e "Iniciando script"
 
 ## URLs
 URL_GOOGLE_CHROME="https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb"
-URL_GITHUB_DESKTOP="https://github.com/shiftkey/desktop/releases/download/release-3.0.6-linux1/GitHubDesktop-linux-3.0.6-linux1.deb"
+URL_GITHUB_DESKTOP="https://github.com/shiftkey/desktop/releases/download/release-3.1.1-linux1/GitHubDesktop-linux-3.1.1-linux1.deb"
 URL_TEAMVIEW="https://download.teamviewer.com/download/linux/teamviewer_amd64.deb"
-URL_ETCHER="https://github.com/balena-io/etcher/releases/download/v1.7.9/balena-etcher-electron_1.7.9_amd64.deb"
-URL_COMPASS="https://downloads.mongodb.com/compass/mongodb-compass_1.32.3_amd64.deb"
+URL_ETCHER="https://github.com/balena-io/etcher/releases/download/v1.10.8/balena-etcher_1.10.8_amd64.deb"
+URL_COMPASS="https://downloads.mongodb.com/compass/mongodb-compass_1.34.1_amd64.deb"
 URL_SKYPE="https://go.skype.com/skypeforlinux-64.deb"
 URL_DBEAVER="https://dbeaver.io/files/dbeaver-ce_latest_amd64.deb"
-URL_SMARTGIT="https://www.syntevo.com/downloads/smartgit/smartgit-21_2_4.deb"
+URL_SMARTGIT="https://www.syntevo.com/downloads/smartgit/smartgit-22_1_1.deb"
 
 ## DIRETORIO E ARQUIVOS
 DIRETORIO_DOWNLOADS="$HOME/Downloads/programas"
@@ -129,7 +129,7 @@ instala_flatpak(){
 instala_spotify(){
     echo -e "${VERDE}[INFO] - Instalando Spotify${SEM_COR}"
 
-    curl -sS https://download.spotify.com/debian/pubkey_5E3C45D7B312C643.gpg | sudo apt-key add -
+    curl -sS https://download.spotify.com/debian/pubkey_5E3C45D7B312C643.gpg | sudo apt-key add - 
     echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
     sudo apt-get update -y && sudo apt-get install spotify-client -y
 }
@@ -210,7 +210,7 @@ instala_flatpaks(){
     #sudo flatpak install flathub com.jetbrains.IntelliJ-IDEA-Ultimate -y
     #sudo flatpak install flathub com.sublimetext.three -y
     sudo flatpak install flathub com.getpostman.Postman -y
-    sudo flatpak install flathub com.spotify.Client -y
+    #sudo flatpak install flathub com.spotify.Client -y
     #sudo flatpak install flathub org.eclipse.Java -y
     #sudo flatpak install flathub com.google.AndroidStudio -y
     sudo flatpak install flathub org.gimp.GIMP -y
@@ -245,7 +245,7 @@ limpa_sistema(){
 
 remove_travas_apt
 testa_internet
-atualiza_repositorios_sistema
+#atualiza_repositorios_sistema
 atualiza
 adiciona_dependencias_e_extras
 #adiciona_suporte_arquitetura_32bits
@@ -255,7 +255,7 @@ instala_flatpak
 #instala_spotify
 instala_ssh_git
 instala_java17
-baixa_intellij
+#baixa_intellij
 #instala_vscode
 baixa_instala_programas_debs
 instala_flatpaks
