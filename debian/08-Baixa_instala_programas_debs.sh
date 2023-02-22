@@ -42,6 +42,8 @@ sudo dpkg --force-depends -i $DIRETORIO_DOWNLOADS/*.deb
 
 sudo apt --fix-broken install -y
 
+sudo cp /etc/apt/trusted.gpg /etc/apt/trusted.gpg.d
+
 sudo rm -rf "$DIRETORIO_DOWNLOADS"
 
 #finalizacao
