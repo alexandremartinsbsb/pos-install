@@ -26,6 +26,7 @@ sudo apt install htop -y
 sudo apt install ttf-mscorefonts-installer -y
 sudo apt install firmware-linux-nonfree -y
 sudo apt install blueman -y
+sudo apt install transmission -y
 
 #finalizacao
 echo -e "${VERDE}[INFO] - Script finalizado, instalacao concluida! :)${SEM_COR}"
