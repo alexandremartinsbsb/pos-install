@@ -1,0 +1,3 @@
+atualizar senha do Root:
+
+sudo passwd root
