@@ -14,6 +14,7 @@ echo -e "${VERDE}[INFO] - Instalando NodeJs, Npm e AngulaCli${SEM_COR}"
 
 curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
 sudo apt install -y nodejs
+sudo npm install -g npm -y
 sudo npm install -g @angular/cli -y
 
 #finalizacao
